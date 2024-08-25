@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Storage;
 
 class Carousel extends AbstractDisplayer
 {
+    /**
+     * @param int $width
+     * @param int $height
+     * @param string $server
+     * @return mixed
+     */
     public function display(int $width = 300, int $height = 200, $server = '')
     {
         if ($this->value instanceof Arrayable) {

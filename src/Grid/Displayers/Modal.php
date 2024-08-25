@@ -4,6 +4,10 @@ namespace Encore\Admin\Grid\Displayers;
 
 class Modal extends AbstractDisplayer
 {
+    /**
+     * @param mixed | null $callback
+     * @return string
+     */
     public function display($callback = null)
     {
         $title = '';

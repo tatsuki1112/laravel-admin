@@ -12,7 +12,7 @@ class Role extends Model
     /**
      * Create a new Eloquent model instance.
      *
-     * @param array $attributes
+     * @param array<mixed> $attributes
      */
     public function __construct(array $attributes = [])
     {
@@ -29,6 +29,7 @@ class Role extends Model
      * A role belongs to many users.
      *
      * @return BelongsToMany
+     * @phpstan-ignore-next-line Method Encore\Admin\Auth\Database\Role::administrators() return type with generic class Illuminate\Database\Eloquent\Relations\BelongsToMany does not specify its types: TRelatedModel
      */
     public function administrators() : BelongsToMany
     {
@@ -43,6 +44,7 @@ class Role extends Model
      * A role belongs to many permissions.
      *
      * @return BelongsToMany
+     * @phpstan-ignore-next-line Method Encore\Admin\Auth\Database\Role::administrators() return type with generic class Illuminate\Database\Eloquent\Relations\BelongsToMany does not specify its types: TRelatedModel
      */
     public function permissions() : BelongsToMany
     {
@@ -57,6 +59,7 @@ class Role extends Model
      * A role belongs to many menus.
      *
      * @return BelongsToMany
+     * @phpstan-ignore-next-line Method Encore\Admin\Auth\Database\Role::administrators() return type with generic class Illuminate\Database\Eloquent\Relations\BelongsToMany does not specify its types: TRelatedModel
      */
     public function menus() : BelongsToMany
     {

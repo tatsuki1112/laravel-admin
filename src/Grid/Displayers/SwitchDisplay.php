@@ -7,11 +7,20 @@ use Illuminate\Support\Arr;
 
 class SwitchDisplay extends AbstractDisplayer
 {
+
+    /**
+     * @var array<string, array<string, mixed>> $states
+     */
     protected $states = [
         'on'  => ['value' => 1, 'text' => 'ON', 'color' => 'primary'],
         'off' => ['value' => 0, 'text' => 'OFF', 'color' => 'default'],
     ];
 
+    /**
+     * @param array<string, array<string, mixed>> $states
+     *
+     * @return void
+     */
     protected function updateStates($states)
     {
         foreach (Arr::dot($states) as $key => $state) {
@@ -19,6 +28,11 @@ class SwitchDisplay extends AbstractDisplayer
         }
     }
 
+    /**
+     * @param array<string, array<string,mixed>> $states
+     *
+     * @return string
+     */
     public function display($states = [])
     {
         $this->updateStates($states);

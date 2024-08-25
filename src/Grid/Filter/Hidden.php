@@ -29,6 +29,10 @@ class Hidden extends AbstractFilter
 
     /**
      * {@inheritdoc}
+     *
+     * @param array<mixed> $inputs
+     *
+     * @return void
      */
     public function condition($inputs)
     {

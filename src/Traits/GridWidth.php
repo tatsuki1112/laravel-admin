@@ -12,14 +12,16 @@ trait GridWidth
     /**
      * grid system prefix width.
      *
-     * @var array
+     * @var array<string, int>|int
      */
     protected $width = [];
 
     /**
      * set grid width
      *
-     * @param int|array|null $width
+     * @param int|array<mixed>|null $width
+     *
+     * @return $this
      */
     public function setWidth($width = 12)
     {

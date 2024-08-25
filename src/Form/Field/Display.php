@@ -27,20 +27,32 @@ class Display extends Field
      */
     protected $escape = true;
 
+    /**
+     * @param mixed $displayText
+     * @return $this
+     */
     public function displayText($displayText)
     {
         $this->displayText = $displayText;
 
         return $this;
     }
-    
+
+    /**
+     * @param mixed $displayClass
+     * @return $this
+     */
     public function displayClass($displayClass)
     {
         $this->displayClass = $displayClass;
 
         return $this;
     }
-    
+
+    /**
+     * @param bool $escape
+     * @return $this
+     */
     public function escape(bool $escape = true)
     {
         $this->escape = $escape;
@@ -51,6 +63,7 @@ class Display extends Field
     /**
      * Render this filed.
      *
+     * @return string
      */
     public function render()
     {

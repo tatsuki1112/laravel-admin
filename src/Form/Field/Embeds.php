@@ -18,7 +18,7 @@ class Embeds extends Field
      * Create a new HasMany field instance.
      *
      * @param string $column
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      */
     public function __construct($column, $arguments = [])
     {
@@ -37,9 +37,9 @@ class Embeds extends Field
     /**
      * Prepare input data for insert or update.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
-     * @return array
+     * @return array<mixed>
      */
     public function prepare($input)
     {
@@ -51,9 +51,9 @@ class Embeds extends Field
     /**
      * Prepare input data for confirm.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
-     * @return array
+     * @return array<mixed>
      */
     public function prepareConfirm($input)
     {
@@ -64,6 +64,8 @@ class Embeds extends Field
 
     /**
      * {@inheritdoc}
+     * @param array<mixed> $input
+     * @return mixed
      */
     public function getValidator(array $input)
     {
@@ -165,11 +167,11 @@ class Embeds extends Field
     /**
      * Format validation attributes.
      *
-     * @param array  $input
+     * @param array<mixed>  $input
      * @param string $label
-     * @param string|array $column
+     * @param string|array<mixed> $column
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function formatValidationAttribute($input, $label, $column)
     {
@@ -206,8 +208,8 @@ class Embeds extends Field
     /**
      * Reset input key for validation.
      *
-     * @param array $input
-     * @param array $column $column is the column name array set
+     * @param array<mixed> $input
+     * @param array<mixed> $column $column is the column name array set
      *
      * @return void.
      */
@@ -240,7 +242,7 @@ class Embeds extends Field
      *
      * When the data validation errors, data is obtained from session flash.
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function getEmbeddedData()
     {
@@ -279,6 +281,7 @@ class Embeds extends Field
 
     /**
      * Render the form.
+     * @return string
      */
     public function render()
     {

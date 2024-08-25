@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Storage;
 
 class Download extends AbstractDisplayer
 {
+    /**
+     * @param string $server
+     * @return mixed
+     */
     public function display($server = '')
     {
         if ($this->value instanceof Arrayable) {

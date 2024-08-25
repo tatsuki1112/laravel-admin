@@ -6,6 +6,9 @@ use Encore\Admin\Admin;
 
 class RowSelector extends AbstractDisplayer
 {
+    /**
+     * @return string
+     */
     public function display()
     {
         Admin::script($this->script());
@@ -15,6 +18,9 @@ class RowSelector extends AbstractDisplayer
 EOT;
     }
 
+    /**
+     * @return string
+     */
     protected function script()
     {
         $allName = $this->grid->getSelectAllName();

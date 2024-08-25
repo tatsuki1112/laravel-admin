@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Widgets\Grid;
 
+use Encore\Admin\Widgets\Grid\Exporters\AbstractExporter;
 use Encore\Admin\Widgets\Grid\Grid;
 use Encore\Admin\Widgets\Grid\Exporters\CsvExporter;
 
@@ -22,7 +23,7 @@ class Exporter
     /**
      * Available exporter drivers.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected static $drivers = [];
 
@@ -37,6 +38,8 @@ class Exporter
      * Create a new Exporter instance.
      *
      * @param Grid $grid
+     *
+     * @return void
      */
     public function __construct(Grid $grid)
     {
@@ -46,7 +49,9 @@ class Exporter
     /**
      * Set export query name.
      *
-     * @param $name
+     * @param string $name
+     *
+     * @return void
      */
     public static function setQueryName($name)
     {
@@ -56,8 +61,10 @@ class Exporter
     /**
      * Extends new exporter driver.
      *
-     * @param $driver
-     * @param $extend
+     * @param mixed $driver
+     * @param mixed $extend
+     *
+     * @return void
      */
     public static function extend($driver, $extend)
     {
@@ -66,6 +73,10 @@ class Exporter
 
     /**
      * Resolve export driver.
+     *
+     * @param Exporters\AbstractExporter|string $driver
+     *
+     * @return AbstractExporter
      */
     public function resolve($driver)
     {

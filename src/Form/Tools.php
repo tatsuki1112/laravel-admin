@@ -17,21 +17,21 @@ class Tools implements Renderable
     /**
      * Collection of tools.
      *
-     * @var array
+     * @var array<string>
      */
     protected $tools = ['delete', 'view', 'list'];
 
     /**
      * Tools should be appends to default tools.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $appends;
 
     /**
      * Tools should be prepends to default tools.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $prepends;
 
@@ -84,6 +84,7 @@ class Tools implements Renderable
 
     /**
      * Disable `list` tool.
+     * @param bool $disable
      *
      * @return $this
      */
@@ -100,6 +101,7 @@ class Tools implements Renderable
 
     /**
      * Disable `delete` tool.
+     * @param bool $disable
      *
      * @return $this
      */
@@ -116,6 +118,7 @@ class Tools implements Renderable
 
     /**
      * Disable `edit` tool.
+     * @param bool $disable
      *
      * @return $this
      */
@@ -132,6 +135,9 @@ class Tools implements Renderable
 
     /**
      * Set request path for resource list Expressly.
+     * @param string $listPath
+     *
+     * @return $this
      */
     public function setListPath($listPath)
     {
@@ -142,6 +148,7 @@ class Tools implements Renderable
 
     /**
      * Get request path for resource list.
+     * @param bool $directList
      *
      * @return string
      */
@@ -316,6 +323,8 @@ HTML;
 
     /**
      * Disable back button.
+     *
+     * @return void
      * @deprecated
      */
     public function disableBackButton()
@@ -337,7 +346,7 @@ HTML;
     /**
      * Render custom tools.
      *
-     * @param Collection|null $tools
+     * @param Collection<int|string, mixed>|null $tools
      *
      * @return mixed
      */

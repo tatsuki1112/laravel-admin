@@ -57,10 +57,17 @@ class Linker
     {
     }
 
+    /**
+     * @return Linker
+     */
     public static function make(){
         return new Linker();
     }
 
+    /**
+     * @param null|mixed $icon
+     * @return $this|mixed
+     */
     public function icon($icon =  null){
         if (!func_num_args()) {
             return $this->icon;
@@ -70,6 +77,10 @@ class Linker
         return $this;
     }
 
+    /**
+     * @param null|mixed $tooltip
+     * @return $this|mixed
+     */
     public function tooltip($tooltip =  null){
         if (!func_num_args()) {
             return $this->tooltip;
@@ -79,6 +90,10 @@ class Linker
         return $this;
     }
 
+    /**
+     * @param null|mixed $url
+     * @return $this|mixed
+     */
     public function url($url =  null){
         if (!func_num_args()) {
             return $this->url;
@@ -88,6 +103,10 @@ class Linker
         return $this;
     }
 
+    /**
+     * @param null|bool|mixed $script
+     * @return $this|bool|mixed
+     */
     public function script($script =  null){
         if (!func_num_args()) {
             return $this->script;
@@ -97,6 +116,10 @@ class Linker
         return $this;
     }
 
+    /**
+     * @param null|mixed|array<mixed> $linkattributes
+     * @return $this|array|mixed
+     */
     public function linkattributes($linkattributes = null){
         if (!func_num_args()) {
             return $this->linkattributes;
@@ -107,7 +130,11 @@ class Linker
         }
         return $this;
     }
-    
+
+    /**
+     * @param null|mixed|array<mixed> $iconattributes
+     * @return $this|array|mixed
+     */
     public function iconattributes($iconattributes = null){
         if (!func_num_args()) {
             return $this->iconattributes;
@@ -152,10 +179,17 @@ class Linker
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function __toString(){
         return $this->render()->render();
     }
 
+    /**
+     * @param array<mixed> $array
+     * @return string
+     */
     protected function getParams($array){
         return implode(" ", collect($array)->map(function($attribute, $key){
             $attribute = htmlspecialchars($attribute, ENT_QUOTES|ENT_HTML5);

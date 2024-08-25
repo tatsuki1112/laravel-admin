@@ -8,12 +8,21 @@ use Encore\Admin\Validator\HasOptionRule;
 
 class Radio extends Field
 {
+    /**
+     * @var bool
+     */
     protected $inline = true;
 
+    /**
+     * @var array<string>
+     */
     protected static $css = [
         '/vendor/laravel-admin/AdminLTE/plugins/iCheck/all.css',
     ];
 
+    /**
+     * @var array<string>
+     */
     protected static $js = [
         '/vendor/laravel-admin/AdminLTE/plugins/iCheck/icheck.min.js',
     ];
@@ -21,8 +30,8 @@ class Radio extends Field
     /**
      * Field constructor.
      *
-     * @param       $column
-     * @param array $arguments
+     * @param string $column
+     * @param array<mixed> $arguments
      */
     public function __construct($column = '', $arguments = [])
     {
@@ -34,7 +43,7 @@ class Radio extends Field
     /**
      * Set options.
      *
-     * @param array|callable|string $options
+     * @param array<mixed>|callable|string $options
      *
      * @return $this
      */
@@ -49,6 +58,9 @@ class Radio extends Field
         return $this;
     }
 
+    /**
+     * @return array|mixed
+     */
     public function getOptions(){
         return $this->options;
     }
@@ -56,7 +68,7 @@ class Radio extends Field
     /**
      * Set checked.
      *
-     * @param array|callable|string $checked
+     * @param array<mixed>|callable|string $checked
      *
      * @return $this
      */
@@ -99,7 +111,7 @@ class Radio extends Field
     /**
      * Set options.
      *
-     * @param array|callable|string $values
+     * @param array<mixed>|callable|string $values
      *
      * @return $this
      */

@@ -24,21 +24,21 @@ class Tools implements Renderable
     /**
      * Default tools.
      *
-     * @var array
+     * @var array<string>
      */
     protected $tools = ['delete', 'edit', 'list'];
 
     /**
      * Tools should be appends to default tools.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $appends;
 
     /**
      * Tools should be prepends to default tools.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $prepends;
 
@@ -154,6 +154,10 @@ class Tools implements Renderable
 
     /**
      * Set request path for resource list Expressly.
+     *
+     * @param string $listPath
+     *
+     * @return $this
      */
     public function setListPath(string $listPath)
     {
@@ -314,7 +318,7 @@ HTML;
     /**
      * Render custom tools.
      *
-     * @param Collection $tools
+     * @param Collection<int|string, mixed> $tools
      *
      * @return mixed
      */

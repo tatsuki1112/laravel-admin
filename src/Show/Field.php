@@ -41,7 +41,7 @@ class Field implements Renderable
     /**
      * Width for label and field.
      *
-     * @var array
+     * @var array<string, int>
      */
     protected $width = [
         'label' => 2,
@@ -69,6 +69,9 @@ class Field implements Renderable
      */
     protected $value;
 
+    /**
+     * @var Collection<int|string, mixed>|array<mixed>
+     */
     protected $showAs = [];
 
     /**
@@ -100,7 +103,7 @@ class Field implements Renderable
     public $border = true;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $fileTypes = [
         'image'      => 'png|jpg|jpeg|tmp|gif',
@@ -120,6 +123,8 @@ class Field implements Renderable
      *
      * @param string $name
      * @param string $label
+     *
+     * @return void
      */
     public function __construct($name = '', $label = '')
     {
@@ -157,7 +162,7 @@ class Field implements Renderable
     /**
      * Format label.
      *
-     * @param $label
+     * @param string $label
      *
      * @return mixed
      */
@@ -178,6 +183,9 @@ class Field implements Renderable
         return $this->label;
     }
 
+    /**
+     * @return bool
+     */
     public function getHorizontal()
     {
         return $this->horizontal;
@@ -210,7 +218,7 @@ class Field implements Renderable
     /**
      * Display field using array value map.
      *
-     * @param array $values
+     * @param array<mixed> $values
      * @param null  $default
      *
      * @return $this
@@ -237,6 +245,7 @@ class Field implements Renderable
     public function image($server = '', $width = 200, $height = 200)
     {
         return $this->unescape()->as(function ($images) use ($server, $width, $height) {
+            /** @var array<mixed> $images */
             return collect($images)->map(function ($path) use ($server, $width, $height) {
                 if (empty($path)) {
                     return '';
@@ -273,6 +282,7 @@ class Field implements Renderable
     public function carousel($width = 300, $height = 200, $server = '')
     {
         return $this->unescape()->as(function ($images) use ($server, $width, $height) {
+            /** @var  array<mixed> $images */
             $items = collect($images)->map(function ($path) use ($server) {
                 if (empty($path)) {
                     return '';
@@ -562,7 +572,7 @@ HTML;
      * Call extended field.
      *
      * @param string|AbstractField|\Closure $abstract
-     * @param array                         $arguments
+     * @param array<mixed>                         $arguments
      *
      * @return Field
      */
@@ -607,7 +617,9 @@ HTML;
 
     /**
      * @param string $method
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
+     *
+     * @return $this|Field
      */
     public function __call($method, $arguments = [])
     {
@@ -630,7 +642,7 @@ HTML;
     /**
      * Get all variables passed to field view.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function variables()
     {

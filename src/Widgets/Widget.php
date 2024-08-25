@@ -18,6 +18,8 @@ use Illuminate\Support\Fluent;
  * @property mixed $paginator
  * @method width(mixed $width)
  * @method height(mixed $height)
+ *
+ * @extends Fluent <int|string, mixed>
  */
 abstract class Widget extends Fluent
 {
@@ -35,6 +37,8 @@ abstract class Widget extends Fluent
      * Set view of widget.
      *
      * @param string $view
+     *
+     * @return void
      */
     public function view($view)
     {
@@ -64,6 +68,8 @@ abstract class Widget extends Fluent
      *
      * @param string $key
      * @param string|null $value
+     *
+     * @return string|void
      */
     protected function attributeElement($key, $value)
     {

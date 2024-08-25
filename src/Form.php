@@ -9,6 +9,7 @@ use Encore\Admin\Form\Field;
 use Encore\Admin\Form\HasHooks;
 use Encore\Admin\Form\Row;
 use Encore\Admin\Form\Tab;
+use Encore\Admin\Grid\Tools\Footer;
 use Encore\Admin\Traits\Resource;
 use Encore\Admin\Traits\FormTrait;
 use Illuminate\Contracts\Support\Renderable;
@@ -119,49 +120,49 @@ class Form implements Renderable
     /**
      * Data for save to current model from input.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $updates = [];
 
     /**
      * Data for save to model's relations from input.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $relations = [];
 
     /**
      * Input data.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $inputs = [];
 
     /**
      * Available fields.
      *
-     * @var array
+     * @var array<string,mixed>
      */
     public static $availableFields = [];
 
     /**
      * Form field alias.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     public static $fieldAlias = [];
 
     /**
      * Ignored saving fields.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $ignored = [];
 
     /**
      * Collected field assets.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected static $collectedAssets = [];
 
@@ -173,7 +174,7 @@ class Form implements Renderable
     /**
      * Field rows in form.
      *
-     * @var array
+     * @var array<mixed>
      */
     public $rows = [];
 
@@ -189,6 +190,7 @@ class Form implements Renderable
 
     /**
      * redirect callback to list.
+     * @var bool
      */
     protected $redirectList = true;
 
@@ -210,14 +212,14 @@ class Form implements Renderable
     /**
      * Set relation models
      *
-     * @var array|null
+     * @var array<mixed>|null
      */
     protected $relationModels;
 
     /**
      * Create a new form instance.
      *
-     * @param $model
+     * @param mixed $model
      * @param \Closure $callback
      */
     public function __construct($model, Closure $callback = null)
@@ -239,6 +241,8 @@ class Form implements Renderable
      * Initialize with user pre-defined default disables, etc.
      *
      * @param Closure $callback
+     *
+     * @return void
      */
     public static function init(Closure $callback = null)
     {
@@ -247,6 +251,8 @@ class Form implements Renderable
 
     /**
      * Call the initialization closure array in sequence.
+     *
+     * @return void
      */
     protected function callInitCallbacks()
     {
@@ -281,6 +287,10 @@ class Form implements Renderable
         return $this->model;
     }
 
+    /**
+     * @param mixed $model
+     * @return $this
+     */
     public function setModel($model)
     {
         $this->model = $model;
@@ -298,7 +308,7 @@ class Form implements Renderable
     /**
      * Generate a edit form.
      *
-     * @param $id
+     * @param mixed $id
      *
      * @return $this
      */
@@ -315,7 +325,8 @@ class Form implements Renderable
     /**
      * Generate a replicate form.
      *
-     * @param $id
+     * @param mixed $id
+     * @param array<mixed> $ignore
      *
      * @return $this
      */
@@ -334,6 +345,7 @@ class Form implements Renderable
      *
      * @param string  $title
      * @param Closure $content
+     * @param bool    $active
      *
      * @return $this
      */
@@ -361,7 +373,7 @@ class Form implements Renderable
     /**
      * Destroy data entity and remove files.
      *
-     * @param $id
+     * @param mixed $id
      *
      * @return mixed
      */
@@ -417,6 +429,8 @@ class Form implements Renderable
      *
      * @param Model $model
      * @param bool  $forceDelete
+     *
+     * @return void
      */
     protected function deleteFiles(Model $model, $forceDelete = false)
     {
@@ -438,6 +452,9 @@ class Form implements Renderable
 
     /**
      * Store a new record.
+     * @param null|mixed $data
+     *
+     * @return mixed
      */
     public function store($data = null)
     {
@@ -512,7 +529,7 @@ class Form implements Renderable
     /**
      * Prepare input data for insert or update.
      *
-     * @param array $data
+     * @param array<mixed> $data
      *
      * @return mixed
      */
@@ -541,9 +558,9 @@ class Form implements Renderable
     /**
      * Remove ignored fields from input.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function removeIgnoredFields($input)
     {
@@ -555,9 +572,9 @@ class Form implements Renderable
     /**
      * Get inputs for relations.
      *
-     * @param array $inputs
+     * @param array<mixed> $inputs
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function getRelationInputs($inputs = [])
     {
@@ -856,7 +873,7 @@ class Form implements Renderable
     /**
      * Check if request is from editable.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
      * @return bool
      */
@@ -869,9 +886,9 @@ class Form implements Renderable
      * Handle updates for single column.
      *
      * @param int   $id
-     * @param array $data
+     * @param array<mixed> $data
      *
-     * @return array|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|Response
+     * @return array<mixed>|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|Response
      */
     protected function handleColumnUpdates($id, $data)
     {
@@ -894,9 +911,9 @@ class Form implements Renderable
     /**
      * Handle editable update.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function handleEditable(array $input = [])
     {
@@ -912,9 +929,9 @@ class Form implements Renderable
     }
 
     /**
-     * @param array $input
+     * @param array<mixed> $input
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function handleFileDelete(array $input = [])
     {
@@ -929,9 +946,9 @@ class Form implements Renderable
     }
 
     /**
-     * @param array $input
+     * @param array<mixed> $input
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function handleFileSort(array $input = [])
     {
@@ -958,7 +975,7 @@ class Form implements Renderable
      * Handle orderable update.
      *
      * @param int   $id
-     * @param array $input
+     * @param array<mixed> $input
      *
      * @return bool
      */
@@ -981,7 +998,7 @@ class Form implements Renderable
     /**
      * Update relation data.
      *
-     * @param array $relationsData
+     * @param array<mixed> $relationsData
      *
      * @return void
      */
@@ -1068,7 +1085,7 @@ class Form implements Renderable
                 case $relation instanceof Relations\MorphMany:
 
                     foreach ($prepared[$name] as $related) {
-                        /** @var Relations\Relation|\Illuminate\Database\Eloquent\Builder $relation */
+                        /** @var Relations\Relation<Model>|\Illuminate\Database\Eloquent\Builder<Model> $relation */
                         $relation = $this->model()->$name();
 
                         $keyName = $relation->getRelated()->getKeyName();
@@ -1096,10 +1113,10 @@ class Form implements Renderable
     /**
      * Prepare input data for update.
      *
-     * @param array $updates
+     * @param array<mixed> $updates
      * @param bool  $oneToOneRelation If column is one-to-one relation.
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function prepareUpdate(array $updates, $oneToOneRelation = false)
     {
@@ -1135,7 +1152,7 @@ class Form implements Renderable
     }
 
     /**
-     * @param string|array $columns
+     * @param string|array<mixed> $columns
      * @param bool         $containsDot
      *
      * @return bool
@@ -1155,9 +1172,9 @@ class Form implements Renderable
     /**
      * Prepare input data for insert.
      *
-     * @param $inserts
+     * @param mixed $inserts
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function prepareInsert($inserts)
     {
@@ -1197,9 +1214,9 @@ class Form implements Renderable
     /**
      * Prepare data for confirm.
      *
-     * @param $inserts
+     * @param mixed $inserts
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function prepareConfirm($inserts)
     {
@@ -1239,7 +1256,7 @@ class Form implements Renderable
     /**
      * Is input data is has-one relation.
      *
-     * @param array $inserts
+     * @param array<mixed> $inserts
      *
      * @return bool
      */
@@ -1261,7 +1278,7 @@ class Form implements Renderable
     /**
      * Ignore fields to save.
      *
-     * @param string|array $fields
+     * @param string|array<mixed> $fields
      *
      * @return $this
      */
@@ -1273,10 +1290,10 @@ class Form implements Renderable
     }
 
     /**
-     * @param array        $data
-     * @param string|array $columns
+     * @param array<mixed>        $data
+     * @param string|array<mixed> $columns
      *
-     * @return array|mixed
+     * @return array<mixed>|mixed
      */
     protected function getDataByColumn($data, $columns)
     {
@@ -1300,7 +1317,7 @@ class Form implements Renderable
     /**
      * Find field object by column.
      *
-     * @param $column
+     * @param mixed $column
      *
      * @return mixed
      */
@@ -1336,7 +1353,9 @@ class Form implements Renderable
     /**
      * Set all fields value in form.
      *
-     * @param $id
+     * @param mixed $id
+     * @param bool $replicate
+     * @param array<mixed> $ignore
      *
      * @return void
      */
@@ -1376,8 +1395,11 @@ class Form implements Renderable
 
     /**
      * Get model by inputs
-     * 
+     *
+     * @param array<mixed> $data
      * @param Model|null $model if set base model, set args
+     *
+     * @return Model|Response
      */
     public function getModelByInputs(array $data = null, ?Model $model = null)
     {
@@ -1408,8 +1430,8 @@ class Form implements Renderable
     /**
      * Get relation models
      *
-     * @param array|null $inputs
-     * @return array|null
+     * @param array<mixed>|null $inputs
+     * @return array<mixed>|null
      */
     public function getRelationModelByInputs(array $inputs = null)
     {
@@ -1463,6 +1485,12 @@ class Form implements Renderable
     }
 
 
+    /**
+     * @param mixed $oldModel
+     * @param mixed $relations
+     * @param array<mixed> $ignore
+     * @return mixed
+     */
     protected function replicateModel($oldModel, $relations, $ignore = []){
         $model = $oldModel->replicate()->setRelations([]);
 
@@ -1531,7 +1559,7 @@ class Form implements Renderable
     /**
      * Validate this form fields, and return redirect if has errors
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
      * @return \Illuminate\Http\RedirectResponse|true
      */
@@ -1548,7 +1576,7 @@ class Form implements Renderable
     /**
      * Get validation messages.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
      * @return MessageBag|bool
      */
@@ -1605,7 +1633,7 @@ class Form implements Renderable
     /**
      * Get all relations of model from callable.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getRelations()
     {
@@ -1729,6 +1757,8 @@ class Form implements Renderable
      * Tools setting for form.
      *
      * @param Closure $callback
+     *
+     * @return void
      */
     public function tools(Closure $callback)
     {
@@ -1895,6 +1925,7 @@ class Form implements Renderable
      *         'redirect': \Closure, //set callback. Please redirect.
      *     ]
      *
+     * @param array<mixed> $submitRedirect
      * @return $this
      */
     public function submitRedirect(array $submitRedirect)
@@ -1908,6 +1939,8 @@ class Form implements Renderable
      * Footer setting for form.
      *
      * @param Closure $callback
+     *
+     * @return \Encore\Admin\Form\Footer|void
      */
     public function footer(Closure $callback = null)
     {
@@ -1966,7 +1999,7 @@ class Form implements Renderable
      * @param string $key
      * @param mixed   $value
      *
-     * @return array|mixed
+     * @return array<mixed>|mixed
      */
     public function input($key, $value = null)
     {
@@ -2068,7 +2101,9 @@ class Form implements Renderable
     /**
      * Remove registered field.
      *
-     * @param array|string $abstract
+     * @param array<mixed>|string $abstract
+     *
+     * @return void
      */
     public static function forget($abstract)
     {
@@ -2101,7 +2136,7 @@ class Form implements Renderable
     /**
      * Collect assets required by registered field.
      *
-     * @return array
+     * @return array<mixed>
      */
     public static function collectFieldAssets()
     {
@@ -2134,7 +2169,7 @@ class Form implements Renderable
      *
      * @param string $name
      *
-     * @return array|mixed
+     * @return array<mixed>|mixed
      */
     public function __get($name)
     {
@@ -2157,7 +2192,7 @@ class Form implements Renderable
      * Generate a Field object and add to form builder if Field exists.
      *
      * @param string $method
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @return Field
      */

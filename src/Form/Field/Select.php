@@ -13,28 +13,31 @@ use Illuminate\Support\Str;
 class Select extends Field
 {
     /**
-     * @var array
+     * @var array<string>
      */
     protected static $css = [
         '/vendor/laravel-admin/AdminLTE/plugins/select2/select2.min.css',
     ];
 
     /**
-     * @var array
+     * @var array<string>
      */
     protected static $js = [
         '/vendor/laravel-admin/AdminLTE/plugins/select2/select2.full.min.js',
     ];
 
+    /**
+     * @var string 
+     */
     public static $modalSelectorName = '#modal-showmodal';
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $groups = [];
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $buttons = [];
 
@@ -44,7 +47,7 @@ class Select extends Field
     protected $escapeMarkup;
 
     /**
-     * @var array
+     * @var array<string>
      */
     protected $config = [];
 
@@ -72,8 +75,8 @@ class Select extends Field
     /**
      * Field constructor.
      *
-     * @param       $column
-     * @param array $arguments
+     * @param string $column
+     * @param array<mixed> $arguments
      */
     public function __construct($column = '', $arguments = [])
     {
@@ -85,8 +88,9 @@ class Select extends Field
     /**
      * Get options.
      * *Not set $this->options*
+     * @param mixed|null $value
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getOptions($value = null) : array
     {
@@ -116,7 +120,7 @@ class Select extends Field
     /**
      * Set options.
      *
-     * @param array|callable|string $options
+     * @param array<mixed>|callable|string $options
      *
      * @return $this|mixed
      */
@@ -148,7 +152,7 @@ class Select extends Field
     /**
      * Set options for validation.
      *
-     * @param array|callable|string $options
+     * @param array<mixed>|callable|string $options
      *
      * @return $this
      */
@@ -191,7 +195,7 @@ class Select extends Field
      *        ...
      *     ]
      *
-     * @param array $groups
+     * @param array<mixed> $groups
      *
      * @return $this
      */
@@ -219,7 +223,7 @@ class Select extends Field
      *        ...
      *     ]
 
-     * @param array $buttons
+     * @param array<mixed> $buttons
      * @return $this
      */
     public function buttons(array $buttons)
@@ -334,8 +338,8 @@ EOT;
     /**
      * Load options for other selects on change.
      *
-     * @param array  $fields
-     * @param array  $sourceUrls
+     * @param array<mixed>  $fields
+     * @param array<mixed>  $sourceUrls
      * @param string $idField
      * @param string $textField
      *
@@ -431,6 +435,9 @@ EOT;
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function disableClear(){
         return $this->config('allowClear', false);
     }
@@ -439,8 +446,8 @@ EOT;
      * Load options from remote.
      *
      * @param string $url
-     * @param array  $parameters
-     * @param array  $options
+     * @param array<mixed>  $parameters
+     * @param array<mixed>  $options
      *
      * @return $this
      */
@@ -491,8 +498,8 @@ EOT;
      * Load options from ajax results.
      *
      * @param string $url
-     * @param $idField
-     * @param $textField
+     * @param string $idField
+     * @param string $textField
      *
      * @return $this
      */
@@ -583,6 +590,7 @@ EOT;
 
     /**
      * {@inheritdoc}
+     * @return string
      */
     public function render()
     {
@@ -638,6 +646,10 @@ EOT;
         return parent::render();
     }
 
+    /**
+     * {@inheritdoc}
+     * @return array<string, array<string>>
+     */
     public static function getAssets()
     {
         $assets = [

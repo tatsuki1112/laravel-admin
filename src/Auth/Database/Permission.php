@@ -9,10 +9,13 @@ use Illuminate\Support\Str;
 
 class Permission extends Model
 {
+    /**
+     * @var array<int, string>
+     */
     protected $fillable = ['name', 'slug', 'http_method', 'http_path'];
 
     /**
-     * @var array
+     * @var array<string>
      */
     public static $httpMethods = [
         'GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD',
@@ -21,7 +24,7 @@ class Permission extends Model
     /**
      * Create a new Eloquent model instance.
      *
-     * @param array $attributes
+     * @param array<mixed> $attributes
      */
     public function __construct(array $attributes = [])
     {
@@ -98,7 +101,7 @@ class Permission extends Model
     /**
      * If a request match the specific HTTP method and path.
      *
-     * @param array   $match
+     * @param array<mixed>   $match
      * @param Request $request
      *
      * @return bool
@@ -108,7 +111,7 @@ class Permission extends Model
         if (!$request->is(trim($match['path'], '/'))) {
             return false;
         }
-
+        /** @phpstan-ignore-next-line Unable to resolve the template type TKey in call to function collect  */
         $method = collect($match['method'])->filter()->map(function ($method) {
             return strtoupper($method);
         });
@@ -117,7 +120,9 @@ class Permission extends Model
     }
 
     /**
-     * @param $method
+     * @param array<mixed>|mixed $method
+     *
+     * @return void
      */
     public function setHttpMethodAttribute($method)
     {
@@ -127,9 +132,9 @@ class Permission extends Model
     }
 
     /**
-     * @param $method
+     * @param string|mixed $method
      *
-     * @return array
+     * @return array<mixed>|mixed
      */
     public function getHttpMethodAttribute($method)
     {

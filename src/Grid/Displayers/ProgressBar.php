@@ -4,6 +4,12 @@ namespace Encore\Admin\Grid\Displayers;
 
 class ProgressBar extends AbstractDisplayer
 {
+    /**
+     * @param string $style
+     * @param string $size
+     * @param int $max
+     * @return string
+     */
     public function display($style = 'primary', $size = '', $max = 100)
     {
         $style = collect((array) $style)->map(function ($style) {

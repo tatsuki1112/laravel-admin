@@ -13,7 +13,7 @@ class MultipleFile extends Field
     /**
      * Css.
      *
-     * @var array
+     * @var array<string>
      */
     protected static $css = [
         '/vendor/laravel-admin/bootstrap-fileinput/css/fileinput.min.css?v=4.5.2',
@@ -22,7 +22,7 @@ class MultipleFile extends Field
     /**
      * Js.
      *
-     * @var array
+     * @var array<string>
      */
     protected static $js = [
         '/vendor/laravel-admin/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js',
@@ -48,7 +48,7 @@ class MultipleFile extends Field
      * Create a new File instance.
      *
      * @param string $column
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      */
     public function __construct($column, $arguments = [])
     {
@@ -69,6 +69,9 @@ class MultipleFile extends Field
 
     /**
      * {@inheritdoc}
+     * @param array<mixed> $input
+     *
+     * @return bool|\Illuminate\Contracts\Validation\Validator|\Illuminate\Contracts\Validation\Factory
      */
     public function getValidator(array $input)
     {
@@ -100,9 +103,9 @@ class MultipleFile extends Field
     /**
      * Hydrate the files array.
      *
-     * @param array $value
+     * @param array<mixed> $value
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function hydrateFiles(array $value)
     {
@@ -125,7 +128,7 @@ class MultipleFile extends Field
      *
      * @param string $order
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function sortFiles($order)
     {
@@ -144,7 +147,7 @@ class MultipleFile extends Field
     /**
      * Prepare for saving.
      *
-     * @param UploadedFile|array $files
+     * @param UploadedFile|array<mixed> $files
      *
      * @return mixed|string
      */
@@ -183,7 +186,7 @@ class MultipleFile extends Field
     }
 
     /**
-     * @return array|mixed
+     * @return array<mixed>|mixed
      */
     public function original()
     {
@@ -213,7 +216,7 @@ class MultipleFile extends Field
     /**
      * Preview html for file-upload plugin.
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function preview()
     {
@@ -255,8 +258,8 @@ class MultipleFile extends Field
     /**
      * Initialize the index.
      *
-     * @param $index
-     * @param $file
+     * @param mixed $index
+     * @param mixed $file
      * @return mixed
      */
     protected function initialFileIndex($index, $file)
@@ -284,7 +287,7 @@ class MultipleFile extends Field
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function initialPreviewConfig()
     {
@@ -323,6 +326,8 @@ class MultipleFile extends Field
 
     /**
      * @param string $options
+     *
+     * @return void
      */
     protected function setupScripts($options)
     {
@@ -394,6 +399,8 @@ EOT;
 
     /**
      * Render file upload field.
+     *
+     * @return string
      */
     public function render()
     {
@@ -423,7 +430,7 @@ EOT;
      *
      * @param string $key
      *
-     * @return array.
+     * @return array<mixed>
      */
     public function destroy($key)
     {

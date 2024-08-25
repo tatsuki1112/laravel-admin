@@ -22,7 +22,7 @@ class Exporter
     /**
      * Available exporter drivers.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected static $drivers = [];
 
@@ -48,7 +48,9 @@ class Exporter
     /**
      * Set export query name.
      *
-     * @param $name
+     * @param string $name
+     *
+     * @return void
      */
     public static function setQueryName($name)
     {
@@ -58,8 +60,10 @@ class Exporter
     /**
      * Extends new exporter driver.
      *
-     * @param $driver
-     * @param $extend
+     * @param mixed $driver
+     * @param  mixed $extend
+     *
+     * @return void
      */
     public static function extend($driver, $extend)
     {
@@ -70,6 +74,8 @@ class Exporter
      * Resolve export driver.
      *
      * @param string|Grid\Exporters\AbstractExporter $driver
+     *
+     * @return Grid\Exporters\AbstractExporter
      */
     public function resolve($driver)
     {

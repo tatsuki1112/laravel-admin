@@ -6,24 +6,37 @@ use Encore\Admin\Form\Field;
 
 class DateRange extends Field
 {
+    /**
+     * @var array<string>
+     */
     protected static $css = [
         '/vendor/laravel-admin/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
     ];
 
+    /**
+     * @var array<string>
+     */
     protected static $js = [
         '/vendor/laravel-admin/moment/min/moment-with-locales.min.js',
         '/vendor/laravel-admin/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
     ];
 
+    /**
+     * @var string
+     */
     protected $format = 'YYYY-MM-DD';
 
     /**
      * Column name.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $column = [];
 
+    /**
+     * @param mixed $column
+     * @param array<int, mixed> $arguments
+     */
     public function __construct($column, $arguments)
     {
         $this->column['start'] = $column;
@@ -38,6 +51,8 @@ class DateRange extends Field
 
     /**
      * {@inheritdoc}
+     * @param mixed $value
+     * @return $this
      */
     public function value($value = null)
     {
@@ -56,6 +71,8 @@ class DateRange extends Field
 
     /**
      * {@inheritdoc}
+     * @param mixed $value
+     * @return mixed
      */
     public function prepare($value)
     {
@@ -66,6 +83,10 @@ class DateRange extends Field
         return $value;
     }
 
+    /**
+     * {@inheritdoc}
+     * @return string
+     */
     public function render()
     {
         $this->options['locale'] = config('app.locale');

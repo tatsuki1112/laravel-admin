@@ -8,7 +8,7 @@ use Encore\Admin\Grid\Tools\TotalRow;
 trait HasTotalRow
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $totalRowColumns = [];
 

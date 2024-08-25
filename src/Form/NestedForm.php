@@ -84,14 +84,14 @@ class NestedForm
     /**
      * Fields in form.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $fields;
 
     /**
      * Original data for this field.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $original = [];
 
@@ -225,7 +225,7 @@ class NestedForm
     /**
      * Set original values for fields.
      *
-     * @param array  $data
+     * @param array<mixed>  $data
      * @param string $relatedKeyName
      *
      * @return $this
@@ -253,7 +253,7 @@ class NestedForm
     /**
      * Prepare for insert or update.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
      * @return mixed
      */
@@ -271,7 +271,7 @@ class NestedForm
     /**
      * Prepare for Confirm.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
      * @return mixed
      */
@@ -307,9 +307,9 @@ class NestedForm
     /**
      * Do prepare work before store and update.
      *
-     * @param array $record
+     * @param array<string, mixed> $record
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function prepareRecord($record, bool $asConfirm = false)
     {
@@ -373,10 +373,10 @@ class NestedForm
     /**
      * Fetch value in input data by column name.
      *
-     * @param array        $data
-     * @param string|array $columns
+     * @param array<mixed>        $data
+     * @param string|array<mixed> $columns
      *
-     * @return array|mixed
+     * @return array<string,mixed>|mixed
      */
     protected function fetchColumnValue($data, $columns)
     {
@@ -412,7 +412,7 @@ class NestedForm
     /**
      * Get fields of this form.
      *
-     * @return Collection
+     * @return Collection<int|string, mixed>
      */
     public function fields()
     {
@@ -422,8 +422,8 @@ class NestedForm
     /**
      * Fill data to all fields in form.
      *
-     * @param array $data
-     * @param $index
+     * @param array<mixed> $data
+     * @param int $index
      * @return $this
      */
     public function fill(array $data, $index)
@@ -440,7 +440,7 @@ class NestedForm
     /**
      * Get the html and script of template.
      *
-     * @return array
+     * @return array<string>
      */
     public function getTemplateHtmlAndScript()
     {
@@ -509,7 +509,7 @@ class NestedForm
      * Add nested-form fields dynamically.
      *
      * @param string $method
-     * @param array  $arguments
+     * @param array<int,mixed>  $arguments
      *
      * @return mixed
      */

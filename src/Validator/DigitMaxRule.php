@@ -8,8 +8,14 @@ use Illuminate\Contracts\Validation\Rule;
  */
 class DigitMaxRule implements Rule
 {
+    /**
+     * @var int
+     */
     protected $max;
 
+    /**
+     * @param int $max
+     */
     public function __construct($max)
     {
         $this->max = $max;

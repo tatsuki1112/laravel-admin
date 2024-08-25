@@ -4,8 +4,15 @@ namespace Encore\Admin\Form\Field;
 
 class Url extends Text
 {
+    /**
+     * @var string
+     */
     protected $rules = 'nullable|url';
 
+    /**
+     * {@inheritdoc}
+     * @return string
+     */
     public function render()
     {
         $this->prepend('<i class="fa fa-internet-explorer fa-fw"></i>')

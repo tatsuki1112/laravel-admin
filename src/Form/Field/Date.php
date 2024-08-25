@@ -4,17 +4,30 @@ namespace Encore\Admin\Form\Field;
 
 class Date extends Text
 {
+    /**
+     * @var array<string>
+     */
     protected static $css = [
         '/vendor/laravel-admin/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
     ];
 
+    /**
+     * @var array<string>
+     */
     protected static $js = [
         '/vendor/laravel-admin/moment/min/moment-with-locales.min.js',
         '/vendor/laravel-admin/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
     ];
 
+    /**
+     * @var string
+     */
     protected $format = 'YYYY-MM-DD';
 
+    /**
+     * @param string $format
+     * @return $this
+     */
     public function format($format)
     {
         $this->format = $format;
@@ -22,6 +35,10 @@ class Date extends Text
         return $this;
     }
 
+    /**
+     * @param string $value
+     * @return mixed|null
+     */
     public function prepare($value)
     {
         if ($value === '') {
@@ -31,6 +48,9 @@ class Date extends Text
         return $value;
     }
 
+    /**
+     * @return string
+     */
     public function render()
     {
         $this->options['format'] = $this->format;

@@ -59,7 +59,7 @@ class AuthController extends Controller
     /**
      * Get a validator for an incoming login request.
      *
-     * @param array $data
+     * @param array<mixed> $data
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */

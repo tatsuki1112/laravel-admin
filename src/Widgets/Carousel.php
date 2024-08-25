@@ -13,7 +13,7 @@ class Carousel extends Widget implements Renderable
     protected $view = 'admin::widgets.carousel';
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $items;
 
@@ -25,7 +25,7 @@ class Carousel extends Widget implements Renderable
     /**
      * Carousel constructor.
      *
-     * @param array|Collection $items
+     * @param array<mixed>|Collection<int|string, mixed>|mixed $items
      */
     public function __construct($items = [])
     {
@@ -40,6 +40,8 @@ class Carousel extends Widget implements Renderable
      * Set title.
      *
      * @param string $title
+     *
+     * @return void
      */
     public function title($title)
     {

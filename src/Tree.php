@@ -4,6 +4,7 @@ namespace Encore\Admin;
 
 use Closure;
 use Encore\Admin\Auth\Database\Menu;
+use Encore\Admin\Traits\ModelTree;
 use Encore\Admin\Tree\Tools;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +17,7 @@ class Tree implements Renderable
     protected $title;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $items = [];
 
@@ -25,6 +26,9 @@ class Tree implements Renderable
      */
     protected $elementId = 'tree-';
 
+    /**
+     * @var Model|null
+     */
     protected $model;
 
     /**
@@ -40,7 +44,7 @@ class Tree implements Renderable
     /**
      * View of tree to render.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $view = [
         'tree'   => 'admin::tree',
@@ -88,7 +92,7 @@ class Tree implements Renderable
     public $useNestable = true;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $nestableOptions = [];
 
@@ -127,6 +131,8 @@ class Tree implements Renderable
 
     /**
      * Setup tree tools.
+     *
+     * @return void
      */
     public function setupTools()
     {
@@ -143,6 +149,7 @@ class Tree implements Renderable
         if (is_null($this->branchCallback)) {
             $this->branchCallback = function ($branch) {
                 $key = $branch[$this->model->getKeyName()];
+                /** @phpstan-ignore-next-line Call to an undefined method Illuminate\Database\Eloquent\Model::getTitleColumn(). */
                 $title = $branch[$this->model->getTitleColumn()];
 
                 return "$key - $title";
@@ -166,6 +173,8 @@ class Tree implements Renderable
 
     /**
      * Set query callback this tree.
+     *
+     * @return $this
      */
     public function query(\Closure $callback)
     {
@@ -188,6 +197,7 @@ class Tree implements Renderable
 
     /**
      * Set title
+     * @param string $title
      *
      * @return void
      */
@@ -199,7 +209,7 @@ class Tree implements Renderable
     /**
      * Set nestable options.
      *
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @return $this
      */
@@ -285,6 +295,7 @@ class Tree implements Renderable
             throw new \InvalidArgumentException(json_last_error_msg());
         }
 
+        /** @phpstan-ignore-next-line Call to an undefined method Illuminate\Database\Eloquent\Model::saveOrder(). */
         $this->model->saveOrder($tree);
 
         return true;
@@ -391,7 +402,9 @@ SCRIPT;
     /**
      * Set view of tree.
      *
-     * @param array $view
+     * @param array<string, string> $view
+     *
+     * @return void
      */
     public function setView($view)
     {
@@ -404,6 +417,7 @@ SCRIPT;
      */
     public function getItems()
     {
+        /** @phpstan-ignore-next-line Call to an undefined method Illuminate\Database\Eloquent\Model::withQuery(). */
         return $this->model
             ->withQuery($this->queryCallback)
             ->getCallback($this->getCallback)
@@ -413,7 +427,7 @@ SCRIPT;
     /**
      * Variables in tree template.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function variables()
     {

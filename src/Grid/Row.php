@@ -30,15 +30,15 @@ class Row
     /**
      * Attributes of row.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $attributes = [];
 
     /**
      * Constructor.
      *
-     * @param $number
-     * @param $data
+     * @param mixed $number
+     * @param mixed $data
      */
     public function __construct($number, $data)
     {
@@ -96,9 +96,10 @@ class Row
         $classes = Column::getClasses($column) ?? [];
         if(is_string($classes))
             $classes = [$classes];
-        
+
+
         $classes[] = "column-$column";
-        
+        /** @phpstan-ignore-next-line Unable to resolve the template type TValue in call to function collect */
         return collect($classes)->unique()->map(function($class){
             return e($class);
         })->implode(' ');
@@ -107,7 +108,7 @@ class Row
     /**
      * Format attributes to html.
      *
-     * @param array $attributes
+     * @param array<mixed> $attributes
      *
      * @return string
      */
@@ -124,7 +125,9 @@ class Row
     /**
      * Set attributes.
      *
-     * @param array $attributes
+     * @param array<mixed> $attributes
+     *
+     * @return void
      */
     public function setAttributes(array $attributes)
     {
@@ -134,7 +137,8 @@ class Row
     /**
      * Set style of the row.
      *
-     * @param array|string $style
+     * @param array<mixed>|string $style
+     * @return void
      */
     public function style($style)
     {

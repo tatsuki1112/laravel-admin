@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 class Layout
 {
     /**
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $columns;
 
@@ -40,6 +40,8 @@ class Layout
      * Add a filter to layout column.
      *
      * @param Filter\AbstractFilter $filter
+     *
+     * @return void
      */
     public function addFilter(Filter\AbstractFilter $filter)
     {
@@ -51,6 +53,8 @@ class Layout
      *
      * @param int      $width
      * @param \Closure $closure
+     *
+     * @return void
      */
     public function column($width, \Closure $closure)
     {
@@ -72,7 +76,7 @@ class Layout
     /**
      * Get all columns in filter layout.
      *
-     * @return Collection
+     * @return Collection<int|string, mixed>
      */
     public function columns()
     {
@@ -85,6 +89,7 @@ class Layout
 
     /**
      * Remove the default ID filter of the default(first) column.
+     * @return void
      */
     public function removeDefaultIDFilter()
     {

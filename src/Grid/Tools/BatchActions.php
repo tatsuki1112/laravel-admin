@@ -16,7 +16,7 @@ class BatchActions extends AbstractTool
 
 
     /**
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $actions;
 
@@ -43,7 +43,7 @@ class BatchActions extends AbstractTool
     /**
      * Append default action(batch delete action).
      *
-     * return void
+     * @return void
      */
     protected function appendDefaultAction()
     {
@@ -79,7 +79,7 @@ class BatchActions extends AbstractTool
     /**
      * Add a batch action.
      *
-     * @param $title
+     * @param BatchAction|string $title
      * @param BatchAction|null $action
      *
      * @return $this

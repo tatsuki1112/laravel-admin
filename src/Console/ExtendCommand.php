@@ -53,7 +53,7 @@ class ExtendCommand extends Command
     protected $extensionDir;
 
     /**
-     * @var array
+     * @var array<string>
      */
     protected $dirs = [
         'database/migrations',
@@ -101,6 +101,8 @@ class ExtendCommand extends Command
 
     /**
      * Show extension scaffolding with tree structure.
+     *
+     * @return void
      */
     protected function showTree()
     {
@@ -131,6 +133,8 @@ TREE;
 
     /**
      * Make extension files.
+     *
+     * @return void
      */
     protected function makeFiles()
     {
@@ -190,7 +194,7 @@ TREE;
     /**
      * Get root namespace for this package.
      *
-     * @return array|null|string
+     * @return array<mixed>|null|string
      */
     protected function getRootNameSpace()
     {
@@ -217,6 +221,8 @@ TREE;
 
     /**
      * Create package dirs.
+     *
+     * @return void
      */
     protected function makeDirs()
     {
@@ -260,6 +266,8 @@ TREE;
      *
      * @param string $to
      * @param string $content
+     *
+     * @return void
      */
     protected function putFile($to, $content)
     {
@@ -271,8 +279,10 @@ TREE;
     /**
      * Copy files to extension path.
      *
-     * @param string|array $from
+     * @param string|array<mixed> $from
      * @param string|null  $to
+     *
+     * @return void
      */
     protected function copy($from, $to = null)
     {
@@ -296,7 +306,9 @@ TREE;
     /**
      * Make new directory.
      *
-     * @param array|string $paths
+     * @param array<mixed>|string $paths
+     *
+     * @return void
      */
     protected function makeDir($paths = '')
     {

@@ -19,16 +19,19 @@ trait UploadField
 
     /**
      * File name.
+     * @var string|null|mixed
      */
     protected $name = null;
 
     /**
      * callable name.
+     * @var callable|null
      */
     protected $callableName = null;
 
     /**
      * Storage instance.
+     * @var string|FilesystemAdapter
      */
     protected $storage = '';
 
@@ -61,7 +64,7 @@ trait UploadField
     /**
      * Configuration for setting up file actions for newly selected file thumbnails in the preview window.
      *
-     * @var array
+     * @var array<string,bool>
      */
     protected $fileActionSettings = [
         'showRemove' => false,
@@ -90,7 +93,7 @@ trait UploadField
     protected $getTmp = null;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $fileTypes = [
         'image'  => '/^(gif|png|jpe?g|svg)$/i',
@@ -116,6 +119,9 @@ trait UploadField
 
     /**
      * Set filetype
+     * @param string  $filetype
+     *
+     * @return $this
      */
     public function filetype($filetype)
     {
@@ -202,7 +208,9 @@ trait UploadField
     }
 
     /**
-     * @return array|bool
+     * @param string $file
+     *
+     * @return array<string>|bool
      */
     protected function guessPreviewType($file)
     {
@@ -263,6 +271,7 @@ trait UploadField
 
     /**
      * Indicates if the underlying field is retainable.
+     * @param bool $retainable
      *
      * @return $this
      */
@@ -276,7 +285,7 @@ trait UploadField
     /**
      * Set options for file-upload plugin.
      *
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @return $this
      */
@@ -489,7 +498,7 @@ trait UploadField
     /**
      * Get file visit url.
      *
-     * @param $path
+     * @param string $path
      *
      * @return string
      */

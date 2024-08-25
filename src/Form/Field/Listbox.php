@@ -9,16 +9,29 @@ namespace Encore\Admin\Form\Field;
  */
 class Listbox extends MultipleSelect
 {
+    /**
+     * @var array<mixed>
+     */
     protected $settings = [];
 
+    /**
+     * @var array<string>
+     */
     protected static $css = [
         '/vendor/laravel-admin/bootstrap-duallistbox/dist/bootstrap-duallistbox.min.css?v=3.0.9',
     ];
 
+    /**
+     * @var array<string>
+     */
     protected static $js = [
         '/vendor/laravel-admin/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.min.js?v=3.0.9',
     ];
 
+    /**
+     * @param array<mixed> $settings
+     * @return $this
+     */
     public function settings(array $settings)
     {
         $this->settings = $settings;
@@ -40,6 +53,10 @@ class Listbox extends MultipleSelect
 
     /**
      * {@inheritdoc}
+     * @param string $url
+     * @param array<mixed> $parameters
+     * @param array<mixed> $options
+     * @return $this
      */
     protected function loadRemoteOptions($url, $parameters = [], $options = [])
     {
@@ -71,6 +88,9 @@ EOT;
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function render()
     {
         $settings = array_merge($this->settings, [

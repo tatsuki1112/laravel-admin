@@ -24,6 +24,8 @@ class ExportButton extends AbstractTool
 
     /**
      * Set up script for export button.
+     *
+     * @return void
      */
     protected function setUpScripts()
     {

@@ -9,6 +9,7 @@ class Between extends AbstractFilter
 {
     /**
      * {@inheritdoc}
+     * @var string
      */
     protected $view = 'admin::filter.between';
 
@@ -17,7 +18,7 @@ class Between extends AbstractFilter
      *
      * @param string $column
      *
-     * @return array|string
+     * @return array<mixed> |string
      */
     public function formatId($column)
     {
@@ -28,8 +29,11 @@ class Between extends AbstractFilter
 
     /**
      * Format two field names of this filter.
-     *
+     * @phpstan-ignore-next-line Return type (array<string, string>) of method Encore\Admin\Grid\Filter\Between::formatName() should be compatible with return type (string|null) of method
+     * Encore\Admin\Grid\Filter\AbstractFilter::formatName()
      * @param string $column
+     *
+     * @return array<string, string>
      */
     protected function formatName($column)
     {
@@ -51,7 +55,7 @@ class Between extends AbstractFilter
     /**
      * Get condition of this filter.
      *
-     * @param array $inputs
+     * @param array<mixed> $inputs
      *
      * @return mixed
      */
@@ -85,7 +89,9 @@ class Between extends AbstractFilter
     }
 
     /**
-     * @param array $options
+     * @param array<string, mixed> $options
+     *
+     * @return $this
      */
     public function datetime($options = [])
     {
@@ -97,7 +103,9 @@ class Between extends AbstractFilter
     }
 
     /**
-     * @param array $options
+     * @param array<string, mixed> $options
+     *
+     * @return void
      */
     protected function setupDatetime($options = [])
     {

@@ -8,8 +8,14 @@ use Illuminate\Contracts\Validation\Rule;
  */
 class DigitMinRule implements Rule
 {
+/**
+     * @var int
+     */
     protected $min;
 
+    /**
+     * @param int $min
+     */
     public function __construct($min)
     {
         $this->min = $min;

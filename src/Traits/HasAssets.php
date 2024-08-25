@@ -5,42 +5,42 @@ namespace Encore\Admin\Traits;
 trait HasAssets
 {
     /**
-     * @var array
+     * @var array<string>
      */
     public static $script = [];
 
     /**
-     * @var array
+     * @var array<string>
      */
     public static $style = [];
 
     /**
-     * @var array
+     * @var array<string>
      */
     public static $css = [];
 
     /**
-     * @var array
+     * @var array<string>
      */
     public static $csslast = [];
 
     /**
-     * @var array
+     * @var array<string>
      */
     public static $js = [];
 
     /**
-     * @var array
+     * @var array<string>
      */
     public static $jslast = [];
 
     /**
-     * @var array
+     * @var array<string>
      */
     public static $html = [];
 
     /**
-     * @var array
+     * @var array<string>
      */
     public static $headerJs = [];
 
@@ -50,12 +50,12 @@ trait HasAssets
     public static $manifest = 'vendor/laravel-admin/minify-manifest.json';
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     public static $manifestData = [];
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     public static $min = [
         'js'  => 'vendor/laravel-admin/laravel-admin.min.js',
@@ -63,7 +63,7 @@ trait HasAssets
     ];
 
     /**
-     * @var array
+     * @var array<string>
      */
     public static $baseCss = [
         'vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css',
@@ -80,7 +80,7 @@ trait HasAssets
     ];
 
     /**
-     * @var array
+     * @var array<string>
      */
     public static $baseJs = [
         'vendor/laravel-admin/AdminLTE/bootstrap/js/bootstrap.min.js',
@@ -103,9 +103,9 @@ trait HasAssets
     /**
      * Add css or get all css.
      *
-     * @param null|array $css
+     * @param null|array<mixed> $css
      *
-     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return array<mixed>|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public static function css($css = null)
     {
@@ -127,7 +127,7 @@ trait HasAssets
     /**
      * @param null $css
      *
-     * @return array|null
+     * @return array<string>|null
      */
     public static function baseCss($css = null)
     {
@@ -145,9 +145,9 @@ trait HasAssets
     /**
      * Add js or get all js.
      *
-     * @param null|array $js
+     * @param null|array<mixed> $js
      *
-     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return array<mixed>|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public static function js($js = null)
     {
@@ -171,7 +171,7 @@ trait HasAssets
      *
      * @param null $js
      *
-     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return array<mixed>|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public static function headerJs($js = null)
     {
@@ -185,7 +185,7 @@ trait HasAssets
     /**
      * @param null $js
      *
-     * @return array|null
+     * @return array<string>|null
      */
     public static function baseJs($js = null)
     {
@@ -201,7 +201,7 @@ trait HasAssets
      *
      * @param null $css
      *
-     * @return array|String
+     * @return array<mixed>
      */
     public static function csslast($css)
     {
@@ -213,7 +213,7 @@ trait HasAssets
      *
      * @param null $js
      *
-     * @return array|String
+     * @return array<mixed>
      */
     public static function jslast($js)
     {
@@ -223,7 +223,7 @@ trait HasAssets
     /**
      * @param string $script
      *
-     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return array<mixed>|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public static function script($script = '')
     {
@@ -247,7 +247,7 @@ trait HasAssets
     /**
      * @param string $style
      *
-     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return array<mixed>|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public static function style($style = '')
     {
@@ -261,7 +261,7 @@ trait HasAssets
     /**
      * @param string $html
      *
-     * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return array<mixed>|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public static function html($html = '')
     {

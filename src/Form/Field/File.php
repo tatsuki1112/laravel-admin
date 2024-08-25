@@ -13,13 +13,14 @@ class File extends Field
 
     /**
      * Tmp file prefix name. If file name is this prefix, get from tmp file.
+     * @var string
      */
     const TMP_FILE_PREFIX = 'tmp:';
 
     /**
      * Css.
      *
-     * @var array
+     * @var array<string>
      */
     protected static $css = [
         '/vendor/laravel-admin/bootstrap-fileinput/css/fileinput.min.css?v=4.5.2',
@@ -28,7 +29,7 @@ class File extends Field
     /**
      * Js.
      *
-     * @var array
+     * @var array<string>
      */
     protected static $js = [
         '/vendor/laravel-admin/bootstrap-fileinput/js/plugins/canvas-to-blob.min.js',
@@ -54,7 +55,7 @@ class File extends Field
      * Create a new File instance.
      *
      * @param string $column
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      */
     public function __construct($column, $arguments = [])
     {
@@ -75,6 +76,7 @@ class File extends Field
 
     /**
      * {@inheritdoc}
+     * @param array<mixed> $input
      */
     public function getValidator(array $input)
     {
@@ -116,7 +118,7 @@ class File extends Field
     /**
      * Prepare for saving.
      *
-     * @param UploadedFile|array|string $file
+     * @param UploadedFile|array<mixed>|string $file
      *
      * @return mixed|string|void
      */
@@ -207,7 +209,7 @@ class File extends Field
     /**
      * Initialize the index.
      *
-     * @param $file
+     * @param mixed $file
      * @return int|mixed
      */
     protected function initialFileIndex($file)
@@ -222,6 +224,7 @@ class File extends Field
      * Initialize the caption.
      *
      * @param string $caption
+     * @param mixed $key
      *
      * @return string
      */
@@ -234,7 +237,7 @@ class File extends Field
     }
 
     /**
-     * @return array
+     * @return array<int, array<mixed, mixed>>
      */
     protected function initialPreviewConfig()
     {
@@ -248,6 +251,7 @@ class File extends Field
 
     /**
      * @param string $options
+     * @return  void
      */
     protected function setupScripts($options)
     {
@@ -310,6 +314,7 @@ EOT;
 
     /**
      * Render file upload field.
+     * @return string
      */
     public function render()
     {

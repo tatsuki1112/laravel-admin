@@ -30,6 +30,7 @@ trait HasTools
 
     /**
      * Disable header tools.
+     * @param bool $disable
      *
      * @return $this
      */
@@ -52,6 +53,7 @@ trait HasTools
 
     /**
      * Render custom tools.
+     * @param string $position
      *
      * @return string
      */

@@ -21,14 +21,14 @@ class Scope implements Renderable
     protected $label = '';
 
     /**
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $queries;
 
     /**
      * Scope constructor.
      *
-     * @param $key
+     * @param string $key
      * @param string $label
      */
     public function __construct($key, $label = '')
@@ -52,7 +52,7 @@ class Scope implements Renderable
     /**
      * Get model query conditions.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function condition()
     {
@@ -73,7 +73,7 @@ class Scope implements Renderable
 
     /**
      * @param string $method
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @return $this
      */

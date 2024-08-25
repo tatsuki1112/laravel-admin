@@ -22,6 +22,8 @@ class CreateUserCommand extends Command
 
     /**
      * Execute the console command.
+     *
+     * @return void
      */
     public function handle()
     {
@@ -36,7 +38,7 @@ class CreateUserCommand extends Command
 
         $roles = $roleModel::all();
 
-        /** @var array $selected */
+        /** @var array<mixed> $selected */
         $selected = $this->choice('Please choose a role for the user', $roles->pluck('name')->toArray(), null, null, true);
 
         $roles = $roles->filter(function ($role) use ($selected) {

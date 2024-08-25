@@ -6,6 +6,10 @@ trait Resource
 {
     /**
      * get resource to grid.
+     *
+     * @param int $slice
+     *
+     * @return string
      */
     protected function getResource($slice)
     {

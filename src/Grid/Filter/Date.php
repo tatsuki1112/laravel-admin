@@ -6,6 +6,7 @@ class Date extends AbstractFilter
 {
     /**
      * {@inheritdoc}
+     * @var string
      */
     protected $query = 'whereDate';
 
@@ -16,6 +17,8 @@ class Date extends AbstractFilter
 
     /**
      * {@inheritdoc}
+     * @param mixed $column
+     * @param  string $label
      */
     public function __construct($column, $label = '')
     {

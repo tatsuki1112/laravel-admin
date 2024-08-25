@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 class Column
 {
     /**
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $filters;
 
@@ -32,6 +32,8 @@ class Column
      * Add a filter to this column.
      *
      * @param AbstractFilter $filter
+     *
+     * @return void
      */
     public function addFilter(AbstractFilter $filter)
     {
@@ -41,7 +43,7 @@ class Column
     /**
      * Get all filters in this column.
      *
-     * @return Collection
+     * @return Collection<int|string, mixed>
      */
     public function filters()
     {
@@ -52,6 +54,8 @@ class Column
      * Set column width.
      *
      * @param int $width
+     *
+     * @return void
      */
     public function setWidth($width)
     {
@@ -70,6 +74,9 @@ class Column
 
     /**
      * Remove filter from column by id.
+     * @param string|int $id
+     *
+     * @return void
      */
     public function removeFilterByID($id)
     {

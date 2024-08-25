@@ -11,7 +11,7 @@ trait CanHidesColumns
     /**
      * Default columns be hidden.
      *
-     * @var array
+     * @var array<mixed>
      */
     public $hiddenColumns = [];
 
@@ -46,7 +46,7 @@ trait CanHidesColumns
     /**
      * Setting default shown columns on grid.
      *
-     * @param array|string $columns
+     * @param array<mixed>|string $columns
      *
      * @return $this
      */
@@ -66,7 +66,7 @@ trait CanHidesColumns
     /**
      * Get visible columns from request query.
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function getVisibleColumnsFromQuery()
     {
@@ -79,7 +79,7 @@ trait CanHidesColumns
     /**
      * Get all visible column instances.
      *
-     * @return Collection|static
+     * @return Collection<int|string, mixed>|static
      */
     public function visibleColumns()
     {
@@ -99,7 +99,7 @@ trait CanHidesColumns
     /**
      * Get all visible column names.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function visibleColumnNames()
     {
@@ -119,7 +119,7 @@ trait CanHidesColumns
     /**
      * Get default visible column names.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getDefaultVisibleColumnNames()
     {

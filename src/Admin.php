@@ -33,7 +33,7 @@ class Admin
     protected $navbar;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $menu = [];
 
@@ -48,7 +48,7 @@ class Admin
     public static $favicon;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     public static $extensions = [];
 
@@ -78,7 +78,7 @@ class Admin
     }
 
     /**
-     * @param $model
+     * @param mixed $model
      * @param Closure $callable
      *
      * @return \Encore\Admin\Grid
@@ -91,7 +91,7 @@ class Admin
     }
 
     /**
-     * @param $model
+     * @param mixed $model
      * @param Closure $callable
      *
      * @return \Encore\Admin\Form
@@ -106,7 +106,7 @@ class Admin
     /**
      * Build a tree.
      *
-     * @param $model
+     * @param mixed $model
      * @param Closure|null $callable
      *
      * @return \Encore\Admin\Tree
@@ -119,7 +119,7 @@ class Admin
     /**
      * Build show page.
      *
-     * @param $model
+     * @param mixed $model
      * @param mixed $callable
      *
      * @return Show
@@ -144,7 +144,7 @@ class Admin
     }
 
     /**
-     * @param $model
+     * @param mixed $model
      *
      * @return mixed
      */
@@ -164,7 +164,7 @@ class Admin
     /**
      * Left sider-bar menu.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function menu()
     {
@@ -181,9 +181,9 @@ class Admin
     }
 
     /**
-     * @param array $menu
+     * @param array<mixed> $menu
      *
-     * @return array
+     * @return array<mixed>
      */
     public function menuLinks($menu = [])
     {
@@ -229,7 +229,7 @@ class Admin
     /**
      * Set favicon.
      * TODO:remove
-     *
+     * @param string $favicon
      * @return void
      */
     public static function setFavicon($favicon)
@@ -356,6 +356,7 @@ class Admin
 
     /**
      * @param callable $callback
+     * @return void
      */
     public static function booting(callable $callback)
     {
@@ -364,6 +365,7 @@ class Admin
 
     /**
      * @param callable $callback
+     * @return void
      */
     public static function registered(callable $callback)
     {
@@ -372,6 +374,7 @@ class Admin
 
     /**
      * @param callable $callback
+     * @return void
      */
     public static function booted(callable $callback)
     {
@@ -380,6 +383,7 @@ class Admin
 
     /**
      * Bootstrap the admin application.
+     * @return void
      */
     public function bootstrap()
     {
@@ -409,6 +413,8 @@ class Admin
 
     /**
      * Call the booting callbacks for the admin application.
+     *
+     * @return void
      */
     protected function fireBootingCallbacks()
     {
@@ -419,6 +425,8 @@ class Admin
 
     /**
      * Call the registered callbacks for the admin application.
+     *
+     * @return void
      */
     protected function fireRegisteredCallbacks()
     {
@@ -429,6 +437,8 @@ class Admin
 
     /**
      * Call the booted callbacks for the admin application.
+     *
+     * @return void
      */
     protected function fireBootedCallbacks()
     {
@@ -437,7 +447,7 @@ class Admin
         }
     }
 
-    /*
+    /**
      * Disable Pjax for current Request
      *
      * @return void

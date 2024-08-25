@@ -8,6 +8,10 @@ class NotEqual extends AbstractFilter
 {
     /**
      * {@inheritdoc}
+     *
+     * @param array<mixed> $inputs
+     *
+     * @return mixed
      */
     public function condition($inputs)
     {

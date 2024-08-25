@@ -59,14 +59,14 @@ class EmbeddedForm
     /**
      * Fields in form.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $fields;
 
     /**
      * Original data for this field.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $original = [];
 
@@ -92,7 +92,7 @@ class EmbeddedForm
     /**
      * Get all fields in current form.
      *
-     * @return Collection
+     * @return Collection<int|string, mixed>
      */
     public function fields()
     {
@@ -116,7 +116,7 @@ class EmbeddedForm
     /**
      * Set original values for fields.
      *
-     * @param array|string $data
+     * @param array<mixed>|string $data
      *
      * @return $this
      */
@@ -138,7 +138,7 @@ class EmbeddedForm
     /**
      * Prepare for insert or update.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
      * @return mixed
      */
@@ -221,7 +221,7 @@ class EmbeddedForm
     /**
      * Fill data to all fields in form.
      *
-     * @param array $data
+     * @param array<mixed> $data
      *
      * @return $this
      */
@@ -293,7 +293,7 @@ class EmbeddedForm
      * Add nested-form fields dynamically.
      *
      * @param string $method
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @return Field|$this
      */

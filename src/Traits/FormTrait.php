@@ -21,12 +21,13 @@ trait FormTrait
     protected $horizontal = true;
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected $attributes = [];
 
     /**
      * Set unique class name for class selector
+     * @param string $uniqueName
      *
      * @return  $this
      */ 
@@ -80,7 +81,7 @@ trait FormTrait
     /**
      * Add form attributes.
      *
-     * @param string|array $attr
+     * @param string|array<mixed> $attr
      * @param string|int       $value
      *
      * @return $this
@@ -108,6 +109,9 @@ trait FormTrait
         return $this;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getAttributes(){
         return $this->attributes;
     }
@@ -115,7 +119,7 @@ trait FormTrait
     /**
      * set class
      *
-     * @param string|array $value
+     * @param string|array<mixed> $value
      * @return $this
      */
     public function setClass($value)

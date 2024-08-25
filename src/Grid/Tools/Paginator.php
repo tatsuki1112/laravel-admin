@@ -3,12 +3,15 @@
 namespace Encore\Admin\Grid\Tools;
 
 use Encore\Admin\Grid;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Request;
 
 class Paginator extends AbstractTool
 {
-
+    /**
+     * @var null|mixed
+     */
     protected $paginator = null;
 
     /**
@@ -40,6 +43,7 @@ class Paginator extends AbstractTool
 
     /**
      * Get Pagination links.
+     * @return string
      */
     protected function paginationLinks()
     {

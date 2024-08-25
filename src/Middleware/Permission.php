@@ -4,6 +4,7 @@ namespace Encore\Admin\Middleware;
 
 use Encore\Admin\Auth\Permission as Checker;
 use Encore\Admin\Facades\Admin;
+use Illuminate\Config\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -19,7 +20,7 @@ class Permission
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure                 $next
-     * @param array                    $args
+     * @param array<mixed>                    $args
      *
      * @return mixed
      */
@@ -85,6 +86,7 @@ class Permission
             'auth/logout',
         ]);
 
+        /** @phpstan-ignore-next-line Unable to resolve the template type TKey in call to function collect  */
         return collect($excepts)
             ->map('admin_base_path')
             ->contains(function ($except) use ($request) {

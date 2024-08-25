@@ -18,14 +18,14 @@ class Panel implements Renderable
     /**
      * The fields that this panel holds.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $fields;
 
     /**
      * Variables in the view.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $data;
 
@@ -48,6 +48,8 @@ class Panel implements Renderable
 
     /**
      * Initialize view data.
+     *
+     * @return void
      */
     protected function initData()
     {
@@ -59,6 +61,11 @@ class Panel implements Renderable
         ];
     }
 
+    /**
+     * @param string $key
+     * @param mixed $value
+     * @return $this
+     */
     public function setData($key, $value)
     {
         $this->data[$key] = $value;
@@ -135,7 +142,9 @@ class Panel implements Renderable
     /**
      * Build panel tools.
      *
-     * @param $callable
+     * @param callable $callable
+     *
+     * @return void
      */
     public function tools($callable)
     {
@@ -144,7 +153,7 @@ class Panel implements Renderable
 
     /**
      * Fill fields to panel.
-     * @param Field[]|Collection $fields
+     * @param Field[]|Collection<int|string, mixed> $fields
      * @return $this
      */
     public function fill($fields)

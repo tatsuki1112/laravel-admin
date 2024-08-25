@@ -39,7 +39,7 @@ class Authenticate
             'auth/login',
             'auth/logout',
         ]);
-
+        /** @phpstan-ignore-next-line Unable to resolve the template type TKey in call to function collect */
         return collect($excepts)
             ->map('admin_base_path')
             ->contains(function ($except) use ($request) {

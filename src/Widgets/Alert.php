@@ -76,7 +76,7 @@ class Alert extends Widget implements Renderable
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     protected function variables()
     {

@@ -7,6 +7,10 @@ use Illuminate\Support\Arr;
 
 class Label extends AbstractDisplayer
 {
+    /**
+     * @param string|Arrayable<int|string, mixed>|array<mixed> $style
+     * @return mixed|string
+     */
     public function display($style = 'success')
     {
         if ($this->value instanceof Arrayable) {

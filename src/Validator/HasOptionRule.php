@@ -8,8 +8,14 @@ use Illuminate\Contracts\Validation\Rule;
  */
 class HasOptionRule implements Rule
 {
+    /**
+     * @var mixed
+     */
     protected $field;
 
+    /**
+     * @param mixed $field
+     */
     public function __construct($field)
     {
         $this->field = $field;
@@ -19,7 +25,7 @@ class HasOptionRule implements Rule
     * Check Validation
     *
     * @param  string  $attribute
-    * @param  array|string|null  $value
+    * @param  array<mixed>|string|null  $value
     * @return bool
     */
     public function passes($attribute, $value)

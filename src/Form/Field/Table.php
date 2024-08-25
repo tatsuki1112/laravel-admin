@@ -15,7 +15,7 @@ class Table extends HasMany
      * Table constructor.
      *
      * @param string $column
-     * @param array  $arguments
+     * @param array<int, mixed>  $arguments
      */
     public function __construct($column, $arguments = [])
     {
@@ -32,7 +32,7 @@ class Table extends HasMany
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function buildRelatedForms()
     {
@@ -63,12 +63,16 @@ class Table extends HasMany
         return $forms;
     }
 
+    /**
+     * @param mixed $input
+     * @return array<mixed>
+     */
     public function prepare($input)
     {
         $form = $this->buildNestedForm($this->column, $this->builder);
 
         $prepare = $form->prepare($input);
-
+        /** @phpstan-ignore-next-line Unable to resolve the template type TKey in call to function collect  */
         return collect($prepare)->reject(function ($item) {
             return $item[NestedForm::REMOVE_FLAG_NAME] == 1;
         })->map(function ($item) {
@@ -78,6 +82,9 @@ class Table extends HasMany
         })->toArray();
     }
 
+    /**
+     * @return string|void
+     */
     protected function getKeyName()
     {
         if (is_null($this->form)) {
@@ -87,6 +94,13 @@ class Table extends HasMany
         return 'id';
     }
 
+    /**
+     * @param string $column
+     * @param \Closure $builder
+     * @param mixed $key
+     * @param mixed $index
+     * @return NestedForm
+     */
     protected function buildNestedForm($column, \Closure $builder, $key = null, $index = null)
     {
         $form = new NestedForm($column);
@@ -103,6 +117,10 @@ class Table extends HasMany
         return $form;
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|string
+     * @throws \Exception
+     */
     public function render()
     {
         return $this->renderTable();

@@ -3,13 +3,14 @@
 namespace Encore\Admin\Widgets\Grid\Tools;
 
 use Encore\Admin\Widgets\Grid\Grid;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Request;
 
 class Paginator extends AbstractTool
 {
     /**
-     * @var \Illuminate\Pagination\LengthAwarePaginator
+     * @var \Illuminate\Pagination\LengthAwarePaginator<array<string, mixed>>
      */
     protected $paginator = null;
 
@@ -17,6 +18,7 @@ class Paginator extends AbstractTool
      * Create a new Paginator instance.
      *
      * @param Grid $grid
+     * @param \Illuminate\Pagination\LengthAwarePaginator<array<string, mixed>> $paginator
      */
     public function __construct(Grid $grid, LengthAwarePaginator $paginator)
     {
@@ -29,6 +31,7 @@ class Paginator extends AbstractTool
     /**
      * Initialize work for Paginator.
      *
+     * @param \Illuminate\Pagination\LengthAwarePaginator<array<string, mixed>> $paginator
      * @return void
      */
     protected function initPaginator(LengthAwarePaginator $paginator)
@@ -42,6 +45,8 @@ class Paginator extends AbstractTool
 
     /**
      * Get Pagination links.
+     *
+     * @return \Illuminate\Contracts\Support\Htmlable
      */
     protected function paginationLinks()
     {
@@ -89,6 +94,7 @@ class Paginator extends AbstractTool
         //     return '';
         // }
 
+        /** @phpstan-ignore-next-line Binary operation "." between string|Symfony\Contracts\Translation\TranslatorInterface and Illuminate\Contracts\Support\Htmlable results in an error. */
         return $this->paginationRanger().
             $this->paginationLinks().
             $this->perPageSelector();

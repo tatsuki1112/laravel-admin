@@ -8,7 +8,7 @@ use Illuminate\Support\Arr;
 class Editable extends AbstractDisplayer
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $arguments = [];
 
@@ -22,21 +22,23 @@ class Editable extends AbstractDisplayer
     /**
      * Options of editable function.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $options = [
         'emptytext'  => '<i class="fa fa-pencil"></i>',
     ];
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $attributes = [];
 
     /**
      * Add options for editable.
      *
-     * @param array $options
+     * @param array<mixed> $options
+     *
+     * @return void
      */
     public function addOptions($options = [])
     {
@@ -46,7 +48,9 @@ class Editable extends AbstractDisplayer
     /**
      * Add attributes for editable.
      *
-     * @param array $attributes
+     * @param array<mixed> $attributes
+     *
+     * @return void
      */
     public function addAttributes($attributes = [])
     {
@@ -55,6 +59,7 @@ class Editable extends AbstractDisplayer
 
     /**
      * Text type editable.
+     * @return void
      */
     public function text()
     {
@@ -62,6 +67,7 @@ class Editable extends AbstractDisplayer
 
     /**
      * Textarea type editable.
+     * @return void
      */
     public function textarea()
     {
@@ -69,6 +75,7 @@ class Editable extends AbstractDisplayer
 
     /**
      * number type editable.
+     * @return void
      */
     public function number()
     {
@@ -77,7 +84,9 @@ class Editable extends AbstractDisplayer
     /**
      * Select type editable.
      *
-     * @param array|\Closure $options
+     * @param array<mixed>|\Closure $options
+     *
+     * @return void
      */
     public function select($options = [])
     {
@@ -103,6 +112,8 @@ class Editable extends AbstractDisplayer
 
     /**
      * Date type editable.
+     *
+     * @return void
      */
     public function date()
     {
@@ -111,6 +122,8 @@ class Editable extends AbstractDisplayer
 
     /**
      * Datetime type editable.
+     *
+     * @return void
      */
     public function datetime()
     {
@@ -119,6 +132,8 @@ class Editable extends AbstractDisplayer
 
     /**
      * Year type editable.
+     *
+     * @return void
      */
     public function year()
     {
@@ -127,6 +142,8 @@ class Editable extends AbstractDisplayer
 
     /**
      * Month type editable.
+     *
+     * @return void
      */
     public function month()
     {
@@ -135,6 +152,8 @@ class Editable extends AbstractDisplayer
 
     /**
      * Day type editable.
+     *
+     * @return void
      */
     public function day()
     {
@@ -143,6 +162,8 @@ class Editable extends AbstractDisplayer
 
     /**
      * Time type editable.
+     *
+     * @return void
      */
     public function time()
     {
@@ -153,6 +174,8 @@ class Editable extends AbstractDisplayer
      * Combodate type editable.
      *
      * @param string $format
+     *
+     * @return void
      */
     public function combodate($format = 'YYYY-MM-DD')
     {
@@ -168,6 +191,10 @@ class Editable extends AbstractDisplayer
         ]);
     }
 
+    /**
+     * @param array<mixed> $arguments
+     * @return void
+     */
     protected function buildEditableOptions(array $arguments = [])
     {
         $this->type = Arr::get($arguments, 0, 'text');
@@ -175,6 +202,9 @@ class Editable extends AbstractDisplayer
         call_user_func_array([$this, $this->type], array_slice($arguments, 1));
     }
 
+    /**
+     * @return string
+     */
     public function display()
     {
         $this->options['name'] = $column = $this->column->getName();

@@ -8,6 +8,9 @@ use Illuminate\Support\Collection;
 
 class PerPageSelector extends AbstractTool
 {
+    /**
+     * @var int
+     */
     protected $perPage;
 
     /**
@@ -45,7 +48,7 @@ class PerPageSelector extends AbstractTool
     /**
      * Get options for selector.
      *
-     * @return Collection
+     * @return Collection<int, int>
      */
     public function getOptions()
     {

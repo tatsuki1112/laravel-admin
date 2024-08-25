@@ -4,6 +4,7 @@ namespace Encore\Admin\Widgets;
 
 use Illuminate\Contracts\Support\Renderable;
 
+
 class InfoBox extends Widget implements Renderable
 {
     /**
@@ -12,7 +13,7 @@ class InfoBox extends Widget implements Renderable
     protected $view = 'admin::widgets.info-box';
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $data = [];
 

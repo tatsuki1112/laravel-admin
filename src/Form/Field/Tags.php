@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 class Tags extends Field
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $value = [];
 
@@ -35,14 +35,14 @@ class Tags extends Field
     protected $saveAction = null;
 
     /**
-     * @var array
+     * @var array<string>
      */
     protected static $css = [
         '/vendor/laravel-admin/AdminLTE/plugins/select2/select2.min.css',
     ];
 
     /**
-     * @var array
+     * @var array<string>
      */
     protected static $js = [
         '/vendor/laravel-admin/AdminLTE/plugins/select2/select2.full.min.js',
@@ -50,6 +50,9 @@ class Tags extends Field
 
     /**
      * {@inheritdoc}
+     * @param array<mixed> $data
+     *
+     * @return void
      */
     public function fill($data)
     {
@@ -69,8 +72,8 @@ class Tags extends Field
     /**
      * Set visible column and key of data.
      *
-     * @param $visibleColumn
-     * @param $key
+     * @param mixed $visibleColumn
+     * @param mixed $key
      *
      * @return $this
      */
@@ -89,7 +92,7 @@ class Tags extends Field
     /**
      * Set the field options.
      *
-     * @param array|Collection|Arrayable $options
+     * @param array<mixed>|Collection<int|string, mixed>|Arrayable<int|string, mixed> $options
      *
      * @return $this|Field
      */
@@ -128,6 +131,9 @@ class Tags extends Field
 
     /**
      * {@inheritdoc}
+     * @param array<mixed> $value
+     *
+     * @return array<mixed>
      */
     public function prepare($value)
     {
@@ -150,7 +156,7 @@ class Tags extends Field
      *
      * @param mixed $value
      *
-     * @return $this|array|mixed
+     * @return $this|array<mixed>|mixed
      */
     public function value($value = null)
     {
@@ -165,6 +171,7 @@ class Tags extends Field
 
     /**
      * {@inheritdoc}
+     * @return string
      */
     public function render()
     {

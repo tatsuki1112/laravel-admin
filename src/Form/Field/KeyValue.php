@@ -4,19 +4,21 @@ namespace Encore\Admin\Form\Field;
 
 use Encore\Admin\Admin;
 use Encore\Admin\Form\Field;
+use Illuminate\Contracts\Validation\Factory;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Arr;
 
 class KeyValue extends Field
 {
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $value = ['' => ''];
 
     /**
      * Fill data to the field.
      *
-     * @param array $data
+     * @param array<mixed> $data
      *
      * @return void
      */
@@ -31,6 +33,8 @@ class KeyValue extends Field
 
     /**
      * {@inheritdoc}
+     * @param array<mixed> $input
+     * @return bool|Validator|Factory
      */
     public function getValidator(array $input)
     {
@@ -60,6 +64,9 @@ class KeyValue extends Field
         return validator($input, $rules, $this->getValidationMessages(), $attributes);
     }
 
+    /**
+     * @return void
+     */
     protected function setupScript()
     {
         $this->script = <<<SCRIPT
@@ -76,11 +83,18 @@ $('tbody').on('click', '.{$this->column}-remove', function () {
 SCRIPT;
     }
 
+    /**
+     * @param array<mixed> $value
+     * @return array<mixed>
+     */
     public function prepare($value)
     {
         return array_combine($value['keys'], $value['values']);
     }
 
+    /**
+     * @return string
+     */
     public function render()
     {
         $this->setupScript();

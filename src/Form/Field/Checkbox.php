@@ -7,14 +7,26 @@ use Illuminate\Support\Arr;
 
 class Checkbox extends MultipleSelect
 {
+    /**
+     * @var bool
+     */
     protected $inline = true;
 
+    /**
+     * @var bool
+     */
     protected $canCheckAll = false;
 
+    /**
+     * @var array<string>
+     */
     protected static $css = [
         '/vendor/laravel-admin/AdminLTE/plugins/iCheck/all.css',
     ];
 
+    /**
+     * @var array<string>
+     */
     protected static $js = [
         '/vendor/laravel-admin/AdminLTE/plugins/iCheck/icheck.min.js',
     ];
@@ -22,7 +34,7 @@ class Checkbox extends MultipleSelect
     /**
      * Set options.
      *
-     * @param array|callable|string $options
+     * @param array<mixed>|callable|string $options
      *
      * @return $this|mixed
      */
@@ -56,7 +68,7 @@ class Checkbox extends MultipleSelect
     /**
      * Set checked.
      *
-     * @param array|callable|string $checked
+     * @param array<mixed>|callable|string $checked
      *
      * @return $this
      */

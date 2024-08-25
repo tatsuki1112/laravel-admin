@@ -13,7 +13,7 @@ trait HasPermissions
     /**
      * Get all permissions of user.
      *
-     * @return Collection
+     * @return Collection<int, mixed>
      */
     public function allPermissions() : Collection
     {
@@ -23,8 +23,8 @@ trait HasPermissions
     /**
      * Check if user has permission.
      *
-     * @param $ability
-     * @param array $arguments
+     * @param mixed $ability
+     * @param array<mixed> $arguments
      *
      * @return bool
      */
@@ -44,7 +44,7 @@ trait HasPermissions
     /**
      * Check if user has no permission.
      *
-     * @param $permission
+     * @param string $permission
      *
      * @return bool
      */
@@ -78,7 +78,7 @@ trait HasPermissions
     /**
      * Check if user in $roles.
      *
-     * @param array $roles
+     * @param array<mixed> $roles
      *
      * @return bool
      */
@@ -90,7 +90,7 @@ trait HasPermissions
     /**
      * If visible for roles.
      *
-     * @param $roles
+     * @param array<mixed> $roles
      *
      * @return bool
      */

@@ -23,7 +23,7 @@ class ListField extends Field
     protected $min = 0;
 
     /**
-     * @var array
+     * @var array<string>
      */
     protected $value = [''];
 
@@ -58,7 +58,7 @@ class ListField extends Field
     /**
      * Fill data to the field.
      *
-     * @param array $data
+     * @param array<mixed> $data
      *
      * @return void
      */
@@ -73,6 +73,8 @@ class ListField extends Field
 
     /**
      * {@inheritdoc}
+     * @param array<mixed> $input
+     * @return bool| \Illuminate\Contracts\Validation\Validator
      */
     public function getValidator(array $input)
     {
@@ -114,6 +116,7 @@ class ListField extends Field
 
     /**
      * {@inheritdoc}
+     * @return  void
      */
     protected function setupScript()
     {
@@ -133,6 +136,8 @@ SCRIPT;
 
     /**
      * {@inheritdoc}
+     * @param mixed $value
+     * @return array<mixed>
      */
     public function prepare($value)
     {
@@ -141,6 +146,7 @@ SCRIPT;
 
     /**
      * {@inheritdoc}
+     * @return string
      */
     public function render()
     {

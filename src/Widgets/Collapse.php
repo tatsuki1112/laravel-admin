@@ -12,7 +12,7 @@ class Collapse extends Widget implements Renderable
     protected $view = 'admin::widgets.collapse';
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $items = [];
 
@@ -44,6 +44,9 @@ class Collapse extends Widget implements Renderable
         return $this;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function variables()
     {
         return [

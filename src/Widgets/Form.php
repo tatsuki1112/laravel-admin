@@ -76,7 +76,7 @@ class Form implements Renderable
     protected $fields = [];
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $data = [];
 
@@ -90,7 +90,7 @@ class Form implements Renderable
     /**
      * Available buttons.
      *
-     * @var array
+     * @var array<string>
      */
     protected $buttons = ['reset', 'submit'];
 
@@ -112,7 +112,7 @@ class Form implements Renderable
      *     ],
      * ]
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $submitRedirects = [];
 
@@ -126,7 +126,7 @@ class Form implements Renderable
     /**
      * Width for label and submit field.
      *
-     * @var array
+     * @var array<string,int>
      */
     protected $width = [
         'label' => 2,
@@ -155,7 +155,7 @@ class Form implements Renderable
     /**
      * Form constructor.
      *
-     * @param array $data
+     * @param array<mixed> $data
      */
     public function __construct($data = [])
     {
@@ -175,7 +175,7 @@ class Form implements Renderable
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public function data()
     {
@@ -185,7 +185,7 @@ class Form implements Renderable
     /**
      * Fill data to form fields.
      *
-     * @param array|mixed $data
+     * @param array<mixed>|mixed $data
      *
      * @return $this
      */
@@ -216,6 +216,8 @@ class Form implements Renderable
 
     /**
      * Initialize the form attributes.
+     *
+     * @return void
      */
     protected function initFormAttributes()
     {
@@ -233,7 +235,7 @@ class Form implements Renderable
     /**
      * Format form attributes form array to html.
      *
-     * @param array $attributes
+     * @param array<string, mixed> $attributes
      *
      * @return string
      */
@@ -345,6 +347,7 @@ class Form implements Renderable
 
     /**
      * Set default Checkbox.
+     * @param mixed $key
      *
      * @return $this
      */
@@ -368,7 +371,7 @@ class Form implements Renderable
      *         'label': 'FOO', // this check label
      *         'redirect': \Closure, //set callback. Please redirect.
      *     ]
-     *
+     * @param array<mixed> $submitRedirect
      * @return $this
      */
     public function submitRedirect(array $submitRedirect)
@@ -440,7 +443,9 @@ class Form implements Renderable
         return $this->fields;
     }
 
-
+    /**
+     * @return $this
+     */
     public function onlyRenderFields(){
         $this->onlyRenderFields = true;
         return $this;
@@ -448,6 +453,8 @@ class Form implements Renderable
 
     /**
      * Get form's script
+     *
+     * @return array<string>
      */
     public function getScript()
     {
@@ -460,7 +467,7 @@ class Form implements Renderable
     /**
      * Get variables for render form.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getVariables()
     {
@@ -564,7 +571,7 @@ class Form implements Renderable
     /**
      * Get validation messages.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
      * @return MessageBag|bool
      */
@@ -578,7 +585,7 @@ class Form implements Renderable
     /**
      * Get validation messages.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
      * @return MessageBag|bool
      */
@@ -651,6 +658,9 @@ class Form implements Renderable
         return $fieldset;
     }
 
+    /**
+     * @return $this
+     */
     public function unbox()
     {
         $this->inbox = false;
@@ -666,6 +676,9 @@ class Form implements Renderable
         return null;
     }
 
+    /**
+     * @return void
+     */
     protected function prepareForm()
     {
         if (method_exists($this, 'form')) {
@@ -673,6 +686,9 @@ class Form implements Renderable
         }
     }
 
+    /**
+     * @return void
+     */
     protected function prepareHandle()
     {
         if (method_exists($this, 'handle')) {
@@ -684,6 +700,8 @@ class Form implements Renderable
 
     /**
      * Setup scripts.
+     *
+     * @return void
      */
     protected function setupScript()
     {
@@ -730,7 +748,7 @@ EOT;
      * Generate a Field object and add to form builder if Field exists.
      *
      * @param string $method
-     * @param array  $arguments
+     * @param array<int, mixed>  $arguments
      *
      * @return Field|$this
      */

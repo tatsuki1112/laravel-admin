@@ -6,6 +6,11 @@ use Encore\Admin\Admin;
 
 class Orderable extends AbstractDisplayer
 {
+    /**
+     * @return string
+     *
+     * @throws \Exception
+     */
     public function display()
     {
         if (!trait_exists('\Spatie\EloquentSortable\SortableTrait')) {
@@ -28,6 +33,9 @@ class Orderable extends AbstractDisplayer
 EOT;
     }
 
+    /**
+     * @return string
+     */
     protected function script()
     {
         return <<<EOT

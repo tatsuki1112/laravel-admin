@@ -8,7 +8,7 @@ use Illuminate\Support\Arr;
 class DateTime extends Presenter
 {
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected $options = [];
 
@@ -20,7 +20,7 @@ class DateTime extends Presenter
     /**
      * DateTime constructor.
      *
-     * @param array $options
+     * @param array<string, mixed> $options
      */
     public function __construct($options = [])
     {
@@ -28,9 +28,9 @@ class DateTime extends Presenter
     }
 
     /**
-     * @param array $options
+     * @param array<string, mixed> $options
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getOptions(array  $options) : array
     {
@@ -40,6 +40,10 @@ class DateTime extends Presenter
         return $options;
     }
 
+
+    /**
+     * @return void
+     */
     protected function prepare()
     {
         $script = "$('#{$this->filter->getId()}').datetimepicker(".json_encode($this->options).');';
@@ -47,6 +51,9 @@ class DateTime extends Presenter
         Admin::script($script);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function variables() : array
     {
         $this->prepare();

@@ -10,7 +10,7 @@ class StepForm extends Form
     protected $current;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $steps = [];
 
@@ -20,12 +20,12 @@ class StepForm extends Form
     protected $url;
 
     /**
-     * @var array
+     * @var array<string>
      */
     protected $buttons = [];
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -36,13 +36,18 @@ class StepForm extends Form
         return $this->redirectToNextStep();
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     protected function prev()
     {
         return back()->withInput();
     }
 
     /**
-     * @param array $data
+     * @param array<mixed> $data
+     *
+     * @return void
      */
     protected function remember($data)
     {
@@ -66,7 +71,7 @@ class StepForm extends Form
     /**
      * Get all data from steps.
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function all()
     {
@@ -77,6 +82,8 @@ class StepForm extends Form
 
     /**
      * Clear all data from steps.
+     *
+     * @return void
      */
     protected function clear()
     {
@@ -84,7 +91,7 @@ class StepForm extends Form
     }
 
     /**
-     * @param array $steps
+     * @param array<mixed> $steps
      *
      * @return $this
      */
@@ -119,6 +126,9 @@ class StepForm extends Form
         return $this;
     }
 
+    /**
+     * @return void
+     */
     protected function prepareForm()
     {
         parent::prepareForm();
@@ -134,6 +144,9 @@ class StepForm extends Form
         $this->addFooter();
     }
 
+    /**
+     * @return void
+     */
     protected function addFooter()
     {
         $footer = '';

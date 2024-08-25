@@ -6,6 +6,10 @@ use Encore\Admin\Admin;
 
 class Expand extends AbstractDisplayer
 {
+    /**
+     * @param null|\Closure $callback
+     * @return string
+     */
     public function display($callback = null)
     {
         $callback = $callback->bindTo($this->row);
@@ -28,6 +32,9 @@ class Expand extends AbstractDisplayer
 EOT;
     }
 
+    /**
+     * @return void
+     */
     protected function setupScript()
     {
         $script = <<<'EOT'

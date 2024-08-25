@@ -14,14 +14,14 @@ class Row implements Buildable, Renderable
     /**
      * row classes.
      *
-     * @var array
+     * @var array<string>
      */
     protected $class = [];
 
     /**
      * Element attributes.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $attributes = [];
 
@@ -41,7 +41,9 @@ class Row implements Buildable, Renderable
      * Add a column.
      *
      * @param int $width
-     * @param $content
+     * @param mixed $content
+     *
+     * @return void
      */
     public function column($width, $content)
     {
@@ -55,7 +57,9 @@ class Row implements Buildable, Renderable
     /**
      * Add class in row.
      *
-     * @param array|string $class
+     * @param array<string>|string $class
+     *
+     * @return $this
      */
     public function class($class)
     {
@@ -71,7 +75,7 @@ class Row implements Buildable, Renderable
     /**
      * Add html attributes to elements.
      *
-     * @param array|string $attribute
+     * @param array<mixed>|string $attribute
      * @param mixed        $value
      *
      * @return $this
@@ -89,6 +93,8 @@ class Row implements Buildable, Renderable
 
     /**
      * Get field attributes.
+     *
+     * @return array<mixed>
      */
     public function getAttributes()
     {
@@ -97,6 +103,8 @@ class Row implements Buildable, Renderable
 
     /**
      * @param Column $column
+     *
+     * @return void
      */
     protected function addColumn(Column $column)
     {
@@ -105,6 +113,8 @@ class Row implements Buildable, Renderable
 
     /**
      * Build row column.
+     *
+     * @return void
      */
     public function build()
     {
@@ -119,6 +129,8 @@ class Row implements Buildable, Renderable
 
     /**
      * Start row.
+     *
+     * @return void
      */
     protected function startRow()
     {
@@ -145,6 +157,8 @@ class Row implements Buildable, Renderable
 
     /**
      * End column.
+     *
+     * @return void
      */
     protected function endRow()
     {

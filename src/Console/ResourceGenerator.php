@@ -13,7 +13,7 @@ class ResourceGenerator
     protected $model;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $formats = [
         'form_field'  => "\$form->%s('%s', __('%s'))",
@@ -22,7 +22,7 @@ class ResourceGenerator
     ];
 
     /**
-     * @var array
+     * @var array<string,array<string>>
      */
     private $doctrineTypeMapping = [
         'string' => [
@@ -33,7 +33,7 @@ class ResourceGenerator
     ];
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $fieldTypeMapping = [
         'ip'       => 'ip',
@@ -162,6 +162,10 @@ class ResourceGenerator
         return $output;
     }
 
+    /**
+     * @return string
+     * @throws \Exception
+     */
     public function generateShow()
     {
         $output = '';
@@ -180,6 +184,10 @@ class ResourceGenerator
         return $output;
     }
 
+    /**
+     * @return string
+     * @throws \Exception
+     */
     public function generateGrid()
     {
         $output = '';
@@ -195,6 +203,9 @@ class ResourceGenerator
         return $output;
     }
 
+    /**
+     * @return array<string>
+     */
     protected function getReservedColumns()
     {
         return [

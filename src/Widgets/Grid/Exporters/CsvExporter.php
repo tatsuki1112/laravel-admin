@@ -48,9 +48,9 @@ class CsvExporter extends AbstractExporter
     }
 
     /**
-     * @param Collection $records
+     * @param Collection<int|string, mixed> $records
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getHeaderRowFromRecords(Collection $records): array
     {
@@ -68,7 +68,7 @@ class CsvExporter extends AbstractExporter
     /**
      * @param Model $record
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getFormattedRecord(Model $record)
     {

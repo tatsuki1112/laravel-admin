@@ -12,7 +12,7 @@ class Permission
     /**
      * Check permission.
      *
-     * @param $permission
+     * @param mixed $permission
      * @return true|void
      */
     public static function check($permission)
@@ -37,7 +37,7 @@ class Permission
     /**
      * Roles allowed to access.
      *
-     * @param $roles
+     * @param array<mixed> $roles
      * @return true|void
      */
     public static function allow($roles)
@@ -65,7 +65,7 @@ class Permission
     /**
      * Roles denied to access.
      *
-     * @param $roles
+     * @param array<mixed> $roles
      * @return true|void
      */
     public static function deny($roles)
@@ -82,6 +82,9 @@ class Permission
 
     /**
      * Send error response page.
+     * @param string|null $message
+     *
+     * @return void
      */
     public static function error($message = null)
     {

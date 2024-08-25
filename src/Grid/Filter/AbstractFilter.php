@@ -34,7 +34,7 @@ abstract class AbstractFilter
     /**
      * Element id.
      *
-     * @var array|string
+     * @var array<mixed>|string
      */
     protected $id;
 
@@ -46,7 +46,7 @@ abstract class AbstractFilter
     protected $label;
 
     /**
-     * @var array|string
+     * @var array<mixed>|string
      */
     protected $value;
 
@@ -61,7 +61,7 @@ abstract class AbstractFilter
     protected $nullcheck = false;
 
     /**
-     * @var array|string
+     * @var array<mixed>|string
      */
     protected $defaultValue;
 
@@ -95,14 +95,14 @@ abstract class AbstractFilter
     protected $view = 'admin::filter.where';
 
     /**
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     public $group;
 
     /**
      * AbstractFilter constructor.
      *
-     * @param $column
+     * @param mixed $column
      * @param string $label
      */
     public function __construct($column, $label = '')
@@ -142,6 +142,8 @@ abstract class AbstractFilter
      * Format name.
      *
      * @param string $column
+     * 
+     * @return string|null
      */
     protected function formatName($column)
     {
@@ -164,9 +166,9 @@ abstract class AbstractFilter
     /**
      * Format id.
      *
-     * @param $columns
+     * @param array<mixed>|string $columns
      *
-     * @return array|string
+     * @return array<mixed>|string
      */
     protected function formatId($columns)
     {
@@ -175,6 +177,8 @@ abstract class AbstractFilter
 
     /**
      * @param Filter $filter
+     * 
+     * @return void
      */
     public function setParent(Filter $filter)
     {
@@ -228,9 +232,9 @@ abstract class AbstractFilter
     /**
      * Get query condition from filter.
      *
-     * @param array $inputs
+     * @param array<mixed> $inputs
      *
-     * @return array|mixed|null
+     * @return array<mixed>|mixed|null
      */
     public function getCondition($inputs)
     {
@@ -246,9 +250,9 @@ abstract class AbstractFilter
     /**
      * Get query condition from filter.
      *
-     * @param array $inputs
+     * @param array<mixed> $inputs
      *
-     * @return array|mixed|null
+     * @return array<mixed>|mixed|null
      */
     public function condition($inputs)
     {
@@ -266,7 +270,7 @@ abstract class AbstractFilter
     /**
      * Get query where null condition from filter.
      *
-     * @return array|mixed|null
+     * @return array<mixed>|mixed|null
      */
     public function whereNullCondition()
     {
@@ -278,7 +282,7 @@ abstract class AbstractFilter
     /**
      * Select filter.
      *
-     * @param array|\Illuminate\Support\Collection $options
+     * @param array<mixed>|\Illuminate\Support\Collection<int|string,mixed> $options
      *
      * @return Select
      */
@@ -288,7 +292,7 @@ abstract class AbstractFilter
     }
 
     /**
-     * @param array|\Illuminate\Support\Collection $options
+     * @param array<mixed>|\Illuminate\Support\Collection<int|string, mixed> $options
      *
      * @return MultipleSelect
      */
@@ -298,7 +302,7 @@ abstract class AbstractFilter
     }
 
     /**
-     * @param array|\Illuminate\Support\Collection $options
+     * @param array<mixed>|\Illuminate\Support\Collection<int|string, mixed> $options
      *
      * @return Radio
      */
@@ -308,7 +312,7 @@ abstract class AbstractFilter
     }
 
     /**
-     * @param array|\Illuminate\Support\Collection $options
+     * @param array<mixed>|\Illuminate\Support\Collection<int|string, mixed> $options
      *
      * @return Checkbox
      */
@@ -320,7 +324,9 @@ abstract class AbstractFilter
     /**
      * Datetime filter.
      *
-     * @param array|\Illuminate\Support\Collection $options
+     * @param array<mixed>|\Illuminate\Support\Collection<int|string, mixed> $options
+     *
+     * @return mixed
      */
     public function datetime($options = [])
     {
@@ -379,6 +385,8 @@ abstract class AbstractFilter
 
     /**
      * show isnull condition.
+     *
+     * @return $this
      */
     public function showNullCheck()
     {
@@ -413,7 +421,7 @@ abstract class AbstractFilter
     /**
      * Set default value for filter.
      *
-     * @param array|string|null $default
+     * @param array<mixed>|string|null $default
      *
      * @return $this
      */
@@ -429,7 +437,7 @@ abstract class AbstractFilter
     /**
      * Get element id.
      *
-     * @return array|string
+     * @return array<mixed>|string
      */
     public function getId()
     {
@@ -465,7 +473,7 @@ abstract class AbstractFilter
     /**
      * Get value of current filter.
      *
-     * @return array|string
+     * @return array<mixed>|string
      */
     public function getValue()
     {
@@ -491,7 +499,7 @@ abstract class AbstractFilter
     /**
      * Build query condition of model relation.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function buildRelationQuery()
     {
@@ -507,7 +515,7 @@ abstract class AbstractFilter
     /**
      * Variables for filter view.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function variables()
     {
@@ -547,8 +555,8 @@ abstract class AbstractFilter
     }
 
     /**
-     * @param $method
-     * @param $params
+     * @param string $method
+     * @param array<mixed> $params
      *
      * @throws \Exception
      *

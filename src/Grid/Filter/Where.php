@@ -56,9 +56,9 @@ class Where extends AbstractFilter
     /**
      * Get condition of this filter.
      *
-     * @param array $inputs
+     * @param array<mixed> $inputs
      *
-     * @return array|mixed|void
+     * @return array<mixed>|mixed|void
      */
     public function condition($inputs)
     {

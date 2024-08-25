@@ -56,6 +56,7 @@ class MakeCommand extends GeneratorCommand
         $this->generator = new ResourceGenerator($modelName);
 
         if ($this->option('output')) {
+            /** @phpstan-ignore-next-line Result of method Encore\Admin\Console\MakeCommand::output() (void) is used. */
             return $this->output($modelName);
         }
 
@@ -73,6 +74,8 @@ class MakeCommand extends GeneratorCommand
 
     /**
      * @param string $modelName
+     *
+     * @return void
      */
     protected function output($modelName)
     {

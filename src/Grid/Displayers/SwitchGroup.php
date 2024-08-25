@@ -7,11 +7,18 @@ use Illuminate\Support\Arr;
 
 class SwitchGroup extends AbstractDisplayer
 {
+    /**
+     * @var array<string, array<string, mixed>>
+     */
     protected $states = [
         'on'  => ['value' => 1, 'text' => 'ON', 'color' => 'primary'],
         'off' => ['value' => 0, 'text' => 'OFF', 'color' => 'default'],
     ];
 
+    /**
+     * @param mixed $states
+     * @return void
+     */
     protected function updateStates($states)
     {
         foreach (Arr::dot($states) as $key => $state) {
@@ -19,6 +26,11 @@ class SwitchGroup extends AbstractDisplayer
         }
     }
 
+    /**
+     * @param array<mixed> $columns
+     * @param array<mixed> $states
+     * @return string
+     */
     public function display($columns = [], $states = [])
     {
         $this->updateStates($states);
@@ -38,6 +50,11 @@ class SwitchGroup extends AbstractDisplayer
         return '<table>'.implode('', $html).'</table>';
     }
 
+    /**
+     * @param string $name
+     * @param string $label
+     * @return string
+     */
     protected function buildSwitch($name, $label = '')
     {
         $class = 'grid-switch-'.str_replace('.', '-', $name);

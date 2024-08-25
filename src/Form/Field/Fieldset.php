@@ -6,6 +6,9 @@ use Encore\Admin\Admin;
 
 class Fieldset
 {
+    /**
+     * @var string
+     */
     protected $name = '';
 
     public function __construct()
@@ -13,6 +16,13 @@ class Fieldset
         $this->name = uniqid('fieldset-');
     }
 
+    /**
+     * Start a fieldset.
+     *
+     * @param string $title
+     *
+     * @return string
+     */
     public function start($title)
     {
         $script = <<<SCRIPT
@@ -36,11 +46,20 @@ SCRIPT;
 HTML;
     }
 
+    /**
+     * @return string
+     */
     public function end()
     {
         return '</div></div>';
     }
 
+    /**
+     * Collapsed fieldset.
+     *
+     *
+     * @return $this
+     */
     public function collapsed()
     {
         $script = <<<SCRIPT

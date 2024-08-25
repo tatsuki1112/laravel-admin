@@ -6,6 +6,10 @@ use Encore\Admin\Admin;
 
 class Select extends AbstractDisplayer
 {
+    /**
+     * @param array<mixed>|\Closure $options
+     * @return string
+     */
     public function display($options = [])
     {
         if ($options instanceof \Closure) {

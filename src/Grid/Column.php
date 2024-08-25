@@ -77,7 +77,7 @@ class Column
     /**
      * Sort arguments.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $sort;
 
@@ -112,19 +112,20 @@ class Column
     /**
      * Attributes of column.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $attributes = [];
 
     /**
      * Classes of column header.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $headerAttributes = [];
 
     /**
      * Relation name.
+     * @var bool|string
      */
     protected $relation = false;
 
@@ -138,7 +139,7 @@ class Column
     /**
      * Original grid data.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected static $originalGridModels;
 
@@ -155,24 +156,24 @@ class Column
     /**
      * Displayers for grid column.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     public static $displayers = [];
 
     /**
      * Defined columns.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     public static $defined = [];
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected static $htmlAttributes = [];
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected static $classes = [];
 
@@ -195,8 +196,10 @@ class Column
     /**
      * Extend column displayer.
      *
-     * @param $name
-     * @param $displayer
+     * @param string $name
+     * @param mixed $displayer
+     *
+     * @return void
      */
     public static function extend($name, $displayer)
     {
@@ -208,6 +211,8 @@ class Column
      *
      * @param string $name
      * @param mixed  $definition
+     *
+     * @return void
      */
     public static function define($name, $definition)
     {
@@ -218,6 +223,8 @@ class Column
      * Set grid instance for column.
      *
      * @param Grid $grid
+     *
+     * @return void
      */
     public function setGrid(Grid $grid)
     {
@@ -229,7 +236,9 @@ class Column
     /**
      * Set model for column.
      *
-     * @param $model
+     * @param Model|null $model
+     *
+     * @return void
      */
     public function setModel($model)
     {
@@ -241,7 +250,9 @@ class Column
     /**
      * Set original data for column.
      *
-     * @param Collection $collection
+     * @param Collection<int|string, mixed> $collection
+     *
+     * @return void
      */
     public static function setOriginalGridModels(Collection $collection)
     {
@@ -251,7 +262,7 @@ class Column
     /**
      * Set column attributes.
      *
-     * @param array $attributes
+     * @param array<mixed> $attributes
      *
      * @return $this
      */
@@ -277,7 +288,7 @@ class Column
     /**
      * Set column classes.
      *
-     * @param array $classes
+     * @param array<mixed> $classes
      *
      * @return $this
      */
@@ -390,6 +401,8 @@ class Column
 
     /**
      * Get header classes of this column.
+     *
+     * @return string
      */
     public function getHeaderAttributes()
     {
@@ -404,7 +417,7 @@ class Column
     /**
      * Set header classes.
      *
-     * @param array $style
+     * @param array<mixed> $style
      * @return $this
      */
     public function setHeaderStyle(array $style)
@@ -424,7 +437,7 @@ class Column
     /**
      * Format label.
      *
-     * @param $label
+     * @param mixed $label
      *
      * @return mixed
      */
@@ -525,6 +538,7 @@ class Column
 
     /**
      * Set cast name for sortable.
+     * @param string $cast
      *
      * @return $this
      */
@@ -547,6 +561,7 @@ class Column
 
     /**
      * Set sort callback.
+     * @param Closure $callback
      *
      * @return $this
      */
@@ -559,6 +574,8 @@ class Column
 
     /**
      * Get sort callback.
+     *
+     * @return Closure
      */
     public function getSortCallback()
     {
@@ -597,7 +614,7 @@ class Column
      * Display using display abstract.
      *
      * @param string $abstract
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @return $this
      */
@@ -618,7 +635,7 @@ class Column
     /**
      * Display column using array value map.
      *
-     * @param array $values
+     * @param array<mixed> $values
      * @param null  $default
      *
      * @return $this
@@ -637,7 +654,7 @@ class Column
     /**
      * Replace output value with giving map.
      *
-     * @param array $replacements
+     * @param array<mixed> $replacements
      *
      * @return $this
      */
@@ -729,8 +746,8 @@ class Column
     /**
      * Display field as a loading icon.
      *
-     * @param array $values
-     * @param array $others
+     * @param array<mixed> $values
+     * @param array<mixed> $others
      *
      * @return $this
      */
@@ -750,7 +767,7 @@ class Column
     /**
      * Display column as an font-awesome icon based on it's value.
      *
-     * @param array  $setting
+     * @param array<mixed>  $setting
      * @param string $default
      *
      * @return $this
@@ -855,7 +872,7 @@ class Column
     /**
      * Fill all data to every column.
      *
-     * @param array $data
+     * @param array<mixed> $data
      *
      * @return mixed
      */
@@ -894,6 +911,7 @@ class Column
     /**
      * Use a defined column.
      *
+     * @return $this|void
      * @throws \Exception
      */
     protected function useDefinedColumn()
@@ -927,7 +945,7 @@ class Column
     /**
      * Convert characters to HTML entities recursively.
      *
-     * @param array|string $item
+     * @param array<mixed>|string $item
      *
      * @return mixed
      */
@@ -1064,7 +1082,7 @@ HELP;
      * Find a displayer to display column.
      *
      * @param string $abstract
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @return $this
      */
@@ -1081,7 +1099,7 @@ HELP;
      * Call Illuminate/Support displayer.
      *
      * @param string $abstract
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @return $this
      */
@@ -1104,7 +1122,7 @@ HELP;
      * Call Builtin displayer.
      *
      * @param Closure|string $abstract
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @return $this
      */
@@ -1137,7 +1155,7 @@ HELP;
      * Allow fluent calls on the Column object.
      *
      * @param string $method
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @return $this
      */

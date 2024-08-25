@@ -19,7 +19,7 @@ abstract class AbstractExporter implements ExporterInterface
     /**
      * Create a new exporter instance.
      *
-     * @param $grid
+     * @param Grid|null $grid
      */
     public function __construct(Grid $grid = null)
     {
@@ -76,10 +76,11 @@ abstract class AbstractExporter implements ExporterInterface
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return \Illuminate\Support\Collection<int|string, mixed>
      */
     public function getCollection()
     {
+        /** @phpstan-ignore-next-line Unable to resolve the template type TKey in call to function collect   */
         return collect($this->getData());
     }
 

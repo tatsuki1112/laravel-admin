@@ -4,6 +4,9 @@ namespace Encore\Admin\Form\Field;
 
 class Mobile extends Text
 {
+    /**
+     * @var array<string>
+     */
     protected static $js = [
         '/vendor/laravel-admin/AdminLTE/plugins/input-mask/jquery.inputmask.bundle.min.js',
     ];
@@ -11,12 +14,15 @@ class Mobile extends Text
     /**
      * @see https://github.com/RobinHerbots/Inputmask#options
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $options = [
         'mask' => '99999999999',
     ];
 
+    /**
+     * @return string
+     */
     public function render()
     {
         $this->inputmask($this->options);

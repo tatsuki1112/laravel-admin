@@ -4,6 +4,12 @@ namespace Encore\Admin\Grid\Displayers;
 
 class Link extends AbstractDisplayer
 {
+    /**
+     * @param string $href
+     * @param string $target
+     *
+     * @return string
+     */
     public function display($href = '', $target = '_blank')
     {
         $href = $href ?: $this->value;

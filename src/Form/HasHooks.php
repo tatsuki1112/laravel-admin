@@ -11,7 +11,7 @@ trait HasHooks
     /**
      * Supported hooks: submitted, editing, saving, saved, deleting, deleted.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $hooks = [];
 
@@ -33,8 +33,9 @@ trait HasHooks
     /**
      * Call hooks by giving name.
      *
-     * @param $name
-     * @param $parameters
+     * @param string $name
+     * @param array<mixed> $parameters
+     *
      * @return Response|void
      */
     protected function callHooks($name, $parameters = [])

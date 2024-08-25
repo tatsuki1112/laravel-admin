@@ -60,6 +60,7 @@ class LogOperation
      */
     protected function inAllowedMethods($method)
     {
+        /** @phpstan-ignore-next-line Unable to resolve the template type TKey in call to function collect */
         $allowedMethods = collect(config('admin.operation_log.allowed_methods'))->filter();
 
         if ($allowedMethods->isEmpty()) {

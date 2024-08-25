@@ -11,11 +11,12 @@ class Select extends Presenter
 {
     /**
      * Options of select.
+     * @var mixed
      */
     protected $options = [];
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $config = [];
 
@@ -54,7 +55,7 @@ class Select extends Presenter
     /**
      * Build options.
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function buildOptions() : array
     {
@@ -143,8 +144,10 @@ SCRIPT;
      * Load options from remote.
      *
      * @param string $url
-     * @param array  $parameters
-     * @param array  $options
+     * @param array<mixed>  $parameters
+     * @param array<mixed>  $options
+     *
+     * @return void
      */
     protected function loadRemoteOptions($url, $parameters = [], $options = [])
     {
@@ -186,8 +189,10 @@ EOT;
      * Load options from ajax.
      *
      * @param string $resourceUrl
-     * @param $idField
-     * @param $textField
+     * @param string $idField
+     * @param string $textField
+     *
+     * @return void
      */
     public function ajax($resourceUrl, $idField = 'id', $textField = 'text')
     {
@@ -243,7 +248,7 @@ EOT;
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     public function variables() : array
     {

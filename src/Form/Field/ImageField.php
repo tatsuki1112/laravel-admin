@@ -13,14 +13,14 @@ trait ImageField
     /**
      * Intervention calls.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $interventionCalls = [];
 
     /**
      * Thumbnail settings.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $thumbnails = [];
 
@@ -61,7 +61,7 @@ trait ImageField
      * Call intervention methods.
      *
      * @param string $method
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @throws \Exception
      *
@@ -96,7 +96,7 @@ trait ImageField
     }
 
     /**
-     * @param string|array $name
+     * @param string|array<mixed> $name
      * @param int          $width
      * @param int          $height
      *

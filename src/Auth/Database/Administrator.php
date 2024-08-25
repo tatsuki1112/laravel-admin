@@ -25,7 +25,7 @@ class Administrator extends Model implements AuthenticatableContract
     /**
      * Create a new Eloquent model instance.
      *
-     * @param array $attributes
+     * @param array<mixed> $attributes
      */
     public function __construct(array $attributes = [])
     {

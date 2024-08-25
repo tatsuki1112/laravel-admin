@@ -9,6 +9,11 @@ use Illuminate\Routing\Controller;
 
 class HandleController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     * @throws Exception
+     */
     public function handleForm(Request $request)
     {
         if (!$request->has('_form_')) {

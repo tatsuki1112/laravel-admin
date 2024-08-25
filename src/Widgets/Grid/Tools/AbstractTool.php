@@ -33,6 +33,8 @@ abstract class AbstractTool implements Renderable
 
     /**
      * If the tool is allowed.
+     *
+     * @return bool
      */
     public function allowed()
     {

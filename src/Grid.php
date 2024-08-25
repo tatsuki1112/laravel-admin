@@ -44,14 +44,14 @@ class Grid
     /**
      * Collection of all grid columns.
      *
-     * @var \Illuminate\Support\Collection
+     * @var \Illuminate\Support\Collection<int|string, mixed>
      */
     protected $columns;
 
     /**
      * Collection of all data rows.
      *
-     * @var \Illuminate\Support\Collection
+     * @var \Illuminate\Support\Collection<int|string, mixed>
      */
     protected $rows;
 
@@ -65,7 +65,7 @@ class Grid
     /**
      * All column names of the grid.
      *
-     * @var array
+     * @var array<mixed>
      */
     public $columnNames = [];
 
@@ -86,7 +86,7 @@ class Grid
     /**
      * All variables in grid view.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $variables = [];
 
@@ -121,7 +121,7 @@ class Grid
     /**
      * Per-page options.
      *
-     * @var array
+     * @var array<int>
      */
     public $perPages = [10, 20, 30, 50, 100];
 
@@ -149,14 +149,14 @@ class Grid
     /**
      * Attributes of table header.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $headerAttributes = [];
 
     /**
      * Options for grid.
      *
-     * @var array
+     * @var array<string, bool>
      */
     protected $options = [
         'show_pagination'        => true,
@@ -216,6 +216,8 @@ class Grid
 
     /**
      * Initialize.
+     *
+     * @return void
      */
     protected function initialize()
     {
@@ -232,6 +234,8 @@ class Grid
      * Initialize with user pre-defined default disables and exporter, etc.
      *
      * @param Closure $callback
+     *
+     * @return void
      */
     public static function init(Closure $callback = null)
     {
@@ -240,6 +244,8 @@ class Grid
 
     /**
      * Call the initialization closure array in sequence.
+     *
+     * @return void
      */
     protected function callInitCallbacks()
     {
@@ -254,6 +260,8 @@ class Grid
 
     /**
      * Call the get data closure array in sequence.
+     *
+     * @return void
      */
     protected function callGetDataCallbacks()
     {
@@ -270,6 +278,8 @@ class Grid
      * Set getdata callback
      *
      * @param Closure $callback
+     *
+     * @return void
      */
     public static function getDataCallback(Closure $callback = null)
     {
@@ -280,6 +290,8 @@ class Grid
      * Handle export request.
      *
      * @param bool $forceExport
+     *
+     * @return void
      */
     protected function handleExportRequest($forceExport = false)
     {
@@ -347,7 +359,7 @@ class Grid
     /**
      * Get original Collection
      *
-     * @return Collection|null
+     * @return Collection<int|string, mixed>|null
      */
     public function getOriginalCollection(){
         return $this->originalCollection;
@@ -381,9 +393,9 @@ class Grid
      * 1.$grid->columns(['name' => 'Name', 'email' => 'Email' ...]);
      * 2.$grid->columns('name', 'email' ...)
      *
-     * @param array $columns
+     * @param array<mixed> $columns
      *
-     * @return Collection|null|void
+     * @return Collection<int|string,mixed>|null|void
      */
     public function columns($columns = [])
     {
@@ -544,7 +556,9 @@ class Grid
     /**
      * Set per-page options.
      *
-     * @param array $perPages
+     * @param array<mixed> $perPages
+     *
+     * @return void
      */
     public function perPages(array $perPages)
     {
@@ -664,7 +678,7 @@ class Grid
     /**
      * Build the grid rows.
      *
-     * @param array $data
+     * @param array<mixed> $data
      *
      * @return void
      */
@@ -684,7 +698,7 @@ class Grid
      *
      * @param Closure $callable
      *
-     * @return Collection|null
+     * @return Collection<int|string, mixed>|null
      */
     public function rows(Closure $callable = null)
     {
@@ -698,7 +712,7 @@ class Grid
     /**
      * Set exporter driver for Grid to export.
      *
-     * @param $exporter
+     * @param string $exporter
      *
      * @return $this
      */
@@ -822,7 +836,9 @@ class Grid
     /**
      * Set table header attributes.
      *
-     * @param array $attributes
+     * @param array<mixed> $attributes
+     *
+     * @return void
      */
     public function setHeaderAttributes(array $attributes)
     {
@@ -848,6 +864,8 @@ class Grid
      * Get current resource uri.
      *
      * @param string $path
+     *
+     * @return $this|string
      */
     public function resource($path = null)
     {
@@ -926,8 +944,8 @@ class Grid
     /**
      * Dynamically add columns to the grid view.
      *
-     * @param $method
-     * @param $arguments
+     * @param mixed $method
+     * @param mixed $arguments
      *
      * @return Column
      */
@@ -990,7 +1008,7 @@ class Grid
     /**
      * Add variables to grid view.
      *
-     * @param array $variables
+     * @param array<mixed> $variables
      *
      * @return $this
      */
@@ -1004,7 +1022,7 @@ class Grid
     /**
      * Get all variables will used in grid view.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function variables()
     {
@@ -1017,7 +1035,9 @@ class Grid
      * Set a view to render.
      *
      * @param string $view
-     * @param array  $variables
+     * @param array<mixed>  $variables
+     *
+     * @return void
      */
     public function setView($view, $variables = [])
     {
@@ -1045,7 +1065,7 @@ class Grid
     /**
      * Set relation for grid.
      *
-     * @param Relations\Relation $relation
+     * @param Relations\Relation<\Illuminate\Database\Eloquent\Model> $relation
      *
      * @return $this
      */

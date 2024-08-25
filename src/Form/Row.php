@@ -24,7 +24,7 @@ class Row implements Renderable
     /**
      * Fields in this row.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $fields = [];
 
@@ -53,7 +53,7 @@ class Row implements Renderable
     /**
      * Get fields of this row.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getFields()
     {
@@ -76,6 +76,8 @@ class Row implements Renderable
 
     /**
      * Render the row.
+     *
+     * @return string
      */
     public function render()
     {
@@ -86,7 +88,7 @@ class Row implements Renderable
      * Add field.
      *
      * @param string $method
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @return Field|void
      */

@@ -14,6 +14,11 @@ class Tools implements Renderable
 {
     protected const POSITIONS = ['left', 'right'];
 
+    /**
+     * Default position.
+     *
+     * @var string
+     */
     public static $defaultPosition = 'left';
 
     /**
@@ -25,6 +30,8 @@ class Tools implements Renderable
 
     /**
      * Collection of tools.
+     *
+     * @var array<string, Collection<int|string, mixed>>
      */
     protected $tools;
 
@@ -47,6 +54,8 @@ class Tools implements Renderable
 
     /**
      * Append default tools.
+     *
+     * @return void
      */
     protected function appendDefaultTools()
     {
@@ -58,6 +67,7 @@ class Tools implements Renderable
      * Append tools.
      *
      * @param AbstractTool|string $tool
+     * @param string|null $position
      *
      * @return $this
      */
@@ -74,6 +84,7 @@ class Tools implements Renderable
      * Prepend a tool.
      *
      * @param AbstractTool|string $tool
+     * @param string|null $position
      *
      * @return $this
      */
@@ -86,6 +97,10 @@ class Tools implements Renderable
         return $this;
     }
 
+    /**
+     * @param string|null $position
+     * @return string
+     */
     protected function getPosition($position){
         if(is_null($position)){
             return static::$defaultPosition;
@@ -148,6 +163,8 @@ class Tools implements Renderable
 
     /**
      * @param \Closure $closure
+     *
+     * @return void
      */
     public function batch(\Closure $closure)
     {
@@ -179,7 +196,7 @@ class Tools implements Renderable
     
     /**
      * Render header tools bar (select position).
-     *
+     * @param string|null  $position
      * @return string
      */
     public function renderPosition($position)

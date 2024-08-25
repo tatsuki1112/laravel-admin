@@ -52,6 +52,7 @@ trait HasTools
 
     /**
      * Render custom tools.
+     * @param string $position
      *
      * @return string
      */

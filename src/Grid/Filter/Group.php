@@ -8,6 +8,9 @@ use Illuminate\Support\Collection;
 
 class Group extends AbstractFilter
 {
+    /**
+     * @var callable|\Closure|string
+     */
     protected $builder;
 
     /**
@@ -46,6 +49,8 @@ class Group extends AbstractFilter
 
     /**
      * Initialize a group filter.
+     *
+     * @return void
      */
     protected function initialize()
     {
@@ -60,7 +65,7 @@ class Group extends AbstractFilter
      * Join a query to group.
      *
      * @param string $label
-     * @param array  $condition
+     * @param array<mixed>  $condition
      *
      * @return $this
      */
@@ -256,6 +261,9 @@ class Group extends AbstractFilter
 
     /**
      * {@inheritdoc}
+     * @param array<mixed> $inputs
+     *
+     * @return mixed
      */
     public function condition($inputs)
     {
@@ -278,6 +286,8 @@ class Group extends AbstractFilter
 
     /**
      * Inject script to current page.
+     *
+     * @return void
      */
     protected function injectScript()
     {
@@ -293,6 +303,8 @@ SCRIPT;
 
     /**
      * {@inheritdoc}
+     *
+     * @return array<string, mixed>
      */
     public function variables()
     {

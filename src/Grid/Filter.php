@@ -63,12 +63,12 @@ class Filter implements Renderable
     protected $model;
 
     /**
-     * @var array
+     * @var array<AbstractFilter>
      */
     protected $filters = [];
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected static $supports = [];
 
@@ -119,7 +119,7 @@ class Filter implements Renderable
     public $expand = false;
 
     /**
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $scopes;
 
@@ -138,7 +138,7 @@ class Filter implements Renderable
     /**
      * Columns of filter that are layout-only.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $layoutOnlyFilterColumns = [];
 
@@ -168,6 +168,8 @@ class Filter implements Renderable
 
     /**
      * Initialize filter layout.
+     *
+     * @return void
      */
     protected function initLayout()
     {
@@ -238,7 +240,7 @@ class Filter implements Renderable
     }
 
     /**
-     * @param $name
+     * @param string $name
      *
      * @return $this
      */
@@ -294,6 +296,8 @@ class Filter implements Renderable
 
     /**
      * Remove ID filter if needed.
+     *
+     * @return void
      */
     public function removeIDFilterIfNeeded()
     {
@@ -308,6 +312,8 @@ class Filter implements Renderable
 
     /**
      * Remove the default ID filter.
+     *
+     * @return void
      */
     protected function removeDefaultIDFilter()
     {
@@ -318,6 +324,8 @@ class Filter implements Renderable
      * Remove filter by filter id.
      *
      * @param mixed $id
+     *
+     * @return void
      */
     protected function removeFilterByID($id)
     {
@@ -329,7 +337,7 @@ class Filter implements Renderable
     /**
      * Get all conditions of the filters.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function conditions()
     {
@@ -371,9 +379,9 @@ class Filter implements Renderable
     }
 
     /**
-     * @param array $inputs
+     * @param array<mixed> $inputs
      *
-     * @return array|void
+     * @return array<mixed>|void
      */
     protected function sanitizeInputs(&$inputs)
     {
@@ -461,7 +469,7 @@ class Filter implements Renderable
     /**
      * Get all filter scopes.
      *
-     * @return Collection
+     * @return Collection<int|string, mixed>
      */
     public function getScopes()
     {
@@ -485,7 +493,7 @@ class Filter implements Renderable
     /**
      * Get scope conditions.
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function scopeConditions()
     {
@@ -530,7 +538,7 @@ class Filter implements Renderable
      *
      * @param bool $toArray
      *
-     * @return array|Collection|mixed
+     * @return array<mixed>|Collection<int|string, mixed>|mixed
      */
     public function execute($toArray = true)
     {
@@ -591,7 +599,7 @@ class Filter implements Renderable
      */
     public function urlWithoutFilters()
     {
-        /** @var Collection $columns */
+        /** @var Collection<int|string, mixed> $columns */
         $columns = collect($this->filters)->map->getColumn()->flatten();
 
         $isnull_columns = $columns->map(function ($value) {
@@ -630,7 +638,7 @@ class Filter implements Renderable
     /**
      * Get full url without query strings.
      *
-     * @param Arrayable|array|string $keys
+     * @param Arrayable<int|string, mixed>|array<mixed>|string $keys
      *
      * @return string
      */
@@ -660,6 +668,8 @@ class Filter implements Renderable
     /**
      * @param string $name
      * @param string $filterClass
+     *
+     * @return void
      */
     public static function extend($name, $filterClass)
     {
@@ -672,7 +682,7 @@ class Filter implements Renderable
 
     /**
      * @param string $abstract
-     * @param array $arguments
+     * @param array<mixed> $arguments
      * @return mixed|void
      */
     public function resolveFilter($abstract, $arguments)
@@ -683,7 +693,9 @@ class Filter implements Renderable
     }
 
     /**
-     * Register builtin filters.
+     * Register builtin filters
+     *
+     * @return void
      */
     public static function registerFilters()
     {
@@ -718,7 +730,7 @@ class Filter implements Renderable
      * Generate a filter object and add to grid.
      *
      * @param string $method
-     * @param array  $arguments
+     * @param array<mixed>  $arguments
      *
      * @return AbstractFilter|$this
      */

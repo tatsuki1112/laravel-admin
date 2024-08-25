@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Request;
 trait ModelTree
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected static $branchOrder = [];
 
@@ -43,7 +43,7 @@ trait ModelTree
     /**
      * Get children of current node.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<static>
      */
     public function children()
     {
@@ -53,7 +53,7 @@ trait ModelTree
     /**
      * Get parent of current node.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<static, static>
      */
     public function parent()
     {
@@ -72,6 +72,8 @@ trait ModelTree
      * Set parent column.
      *
      * @param string $column
+     *
+     * @return void
      */
     public function setParentColumn($column)
     {
@@ -92,6 +94,8 @@ trait ModelTree
      * Set title column.
      *
      * @param string $column
+     *
+     * @return void
      */
     public function setTitleColumn($column)
     {
@@ -100,6 +104,8 @@ trait ModelTree
 
     /**
      * Get order column name.
+     *
+     * @return string
      *
      * @return string
      */
@@ -112,6 +118,8 @@ trait ModelTree
      * Set order column.
      *
      * @param string $column
+     *
+     * @return void
      */
     public function setOrderColumn($column)
     {
@@ -147,7 +155,7 @@ trait ModelTree
     /**
      * Format data to tree like array.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function toTree()
     {
@@ -157,10 +165,10 @@ trait ModelTree
     /**
      * Build Nested array.
      *
-     * @param array $nodes
+     * @param array<mixed> $nodes
      * @param int   $parentId
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function buildNestedArray(array $nodes = [], $parentId = 0)
     {
@@ -213,7 +221,7 @@ trait ModelTree
     /**
      * Set the order of branches in the tree.
      *
-     * @param array $order
+     * @param array<mixed> $order
      *
      * @return void
      */
@@ -229,8 +237,10 @@ trait ModelTree
     /**
      * Save tree order from a tree like array.
      *
-     * @param array $tree
+     * @param array<mixed> $tree
      * @param int   $parentId
+     *
+     * @return void
      */
     public static function saveOrder($tree = [], $parentId = 0)
     {
@@ -257,7 +267,7 @@ trait ModelTree
      * @param \Closure|null $closure
      * @param string        $rootText
      *
-     * @return array
+     * @return array<mixed>
      */
     public static function selectOptions(\Closure $closure = null, $rootText = 'ROOT')
     {
@@ -269,12 +279,12 @@ trait ModelTree
     /**
      * Build options of select field in form.
      *
-     * @param array  $nodes
+     * @param array<mixed>  $nodes
      * @param int    $parentId
      * @param string $prefix
      * @param string $space
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function buildSelectOptions(array $nodes = [], $parentId = 0, $prefix = '', $space = '&nbsp;')
     {
@@ -307,6 +317,8 @@ trait ModelTree
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool|null
      */
     public function delete()
     {
@@ -317,6 +329,8 @@ trait ModelTree
 
     /**
      * {@inheritdoc}
+     *
+     * @return void
      */
     protected static function boot()
     {

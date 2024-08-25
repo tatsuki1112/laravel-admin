@@ -50,7 +50,7 @@ trait HasQuickSearch
     }
 
     /**
-     * @param array|string|\Closure $search
+     * @param array<mixed>|string|\Closure $search
      * @return $this
      */
     public function quickSearch($search = null)
@@ -104,6 +104,8 @@ trait HasQuickSearch
      * Add where bindings.
      *
      * @param string $query
+     *
+     * @return void
      */
     protected function addWhereBindings($query)
     {
@@ -145,9 +147,9 @@ trait HasQuickSearch
     /**
      * Parse quick query bindings.
      *
-     * @param array $queries
+     * @param array<mixed> $queries
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function parseQueryBindings(array $queries)
     {
@@ -186,6 +188,8 @@ trait HasQuickSearch
      * @param string $column
      * @param bool   $or
      * @param string $pattern
+     *
+     * @return void
      */
     protected function addWhereLikeBinding(string $column, bool $or, string $pattern)
     {
@@ -204,6 +208,8 @@ trait HasQuickSearch
      * @param bool   $or
      * @param string $function
      * @param string $value
+     *
+     * @return void
      */
     protected function addWhereDatetimeBinding(string $column, bool $or, string $function, string $value)
     {
@@ -219,6 +225,8 @@ trait HasQuickSearch
      * @param bool   $or
      * @param bool   $not
      * @param string $values
+     *
+     * @return void
      */
     protected function addWhereInBinding(string $column, bool $or, bool $not, string $values)
     {
@@ -244,6 +252,8 @@ trait HasQuickSearch
      * @param bool   $or
      * @param string $start
      * @param string $end
+     *
+     * @return void
      */
     protected function addWhereBetweenBinding(string $column, bool $or, string $start, string $end)
     {
@@ -259,6 +269,8 @@ trait HasQuickSearch
      * @param bool   $or
      * @param string $operator
      * @param string $value
+     *
+     * @return void
      */
     protected function addWhereBasicBinding(string $column, bool $or, string $operator, string $value)
     {

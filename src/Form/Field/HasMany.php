@@ -34,14 +34,14 @@ class HasMany extends Field
     /**
      * relatedValue.
      *
-     * @var array|null
+     * @var array<mixed>|null
      */
     protected $relatedValue = null;
 
     /**
      * Form data.
      *
-     * @var array|null
+     * @var array<mixed>|null
      */
     protected $value = [];
 
@@ -57,7 +57,7 @@ class HasMany extends Field
     /**
      * Available views for HasMany field.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $views = [
         'default' => 'admin::form.hasmany',
@@ -68,20 +68,23 @@ class HasMany extends Field
     /**
      * Options for template.
      *
-     * @var array
+     * @var array<string, bool>
      */
     protected $options = [
         'allowCreate' => true,
         'allowDelete' => true,
     ];
 
+    /**
+     * @var bool
+     */
     protected $enableHeader = true;
 
     /**
      * Create a new HasMany field instance.
      *
-     * @param $relationName
-     * @param array $arguments
+     * @param string $relationName
+     * @param array<mixed> $arguments
      */
     public function __construct($relationName, $arguments = [])
     {
@@ -102,7 +105,7 @@ class HasMany extends Field
     /**
      * Get validator for this field.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
      * @return bool|\Illuminate\Contracts\Validation\Validator
      */
@@ -173,11 +176,11 @@ class HasMany extends Field
     /**
      * Format validation attributes.
      *
-     * @param array  $input
+     * @param array<mixed>  $input
      * @param string $label
-     * @param string|array $column
+     * @param string|array<mixed> $column
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function formatValidationAttribute($input, $label, $column)
     {
@@ -206,6 +209,10 @@ class HasMany extends Field
         return $attributes;
     }
 
+    /**
+     * @param mixed $relatedValue
+     * @return $this
+     */
     public function setRelatedValue($relatedValue){
         $this->relatedValue = $relatedValue;
 
@@ -215,8 +222,8 @@ class HasMany extends Field
     /**
      * Reset input key for validation.
      *
-     * @param array $input
-     * @param array $column $column is the column name array set
+     * @param array<mixed> $input
+     * @param array<mixed> $column $column is the column name array set
      *
      * @return void.
      */
@@ -279,9 +286,9 @@ class HasMany extends Field
     /**
      * Prepare input data for insert or update.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
-     * @return array
+     * @return mixed
      */
     public function prepare($input)
     {
@@ -293,9 +300,9 @@ class HasMany extends Field
     /**
      * Prepare input data for Confirm.
      *
-     * @param array $input
+     * @param array<mixed> $input
      *
-     * @return array
+     * @return mixed
      */
     public function prepareConfirm($input)
     {
@@ -326,7 +333,10 @@ class HasMany extends Field
 
         return false;
     }
-    
+
+    /**
+     * @return $this
+     */
     public function disableHeader()
     {
         $this->enableHeader = false;
@@ -340,6 +350,7 @@ class HasMany extends Field
      * @param string   $column
      * @param \Closure $builder
      * @param null|Model     $model
+     * @param null|int       $index
      *
      * @return NestedForm
      */
@@ -364,6 +375,7 @@ class HasMany extends Field
 
     /**
      * Get the HasMany relation key name.
+     * @return void|string
      */
     protected function getKeyName()
     {
@@ -425,7 +437,7 @@ class HasMany extends Field
      *
      * @throws \Exception
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function buildRelatedForms()
     {
@@ -717,7 +729,7 @@ EOT;
 
     /**
      * Render the `HasMany` field for table style.
-     *
+     * @return string
      * @throws \Exception
      */
     protected function renderTable()

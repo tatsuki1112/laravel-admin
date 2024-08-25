@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 class AdminServiceProvider extends ServiceProvider
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $commands = [
         Console\AdminCommand::class,
@@ -30,7 +30,7 @@ class AdminServiceProvider extends ServiceProvider
     /**
      * The application's route middleware.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $routeMiddleware = [
         'admin.auth'       => Middleware\Authenticate::class,
@@ -44,7 +44,7 @@ class AdminServiceProvider extends ServiceProvider
     /**
      * The application's route middleware groups.
      *
-     * @var array
+     * @var array<string, array<string>>
      */
     protected $middlewareGroups = [
         'admin' => [

@@ -84,7 +84,9 @@ if (!function_exists('admin_toastr')) {
      *
      * @param string $message
      * @param string $type
-     * @param array  $options
+     * @param array<mixed>  $options
+     *
+     * @return void
      */
     function admin_toastr($message = '', $type = 'success', $options = [])
     {
@@ -101,6 +103,8 @@ if (!function_exists('admin_success')) {
      *
      * @param string $title
      * @param string $message
+     *
+     * @return void
      */
     function admin_success($title, $message = '')
     {
@@ -115,6 +119,8 @@ if (!function_exists('admin_error')) {
      *
      * @param string $title
      * @param string $message
+     *
+     * @return void
      */
     function admin_error($title, $message = '')
     {
@@ -129,6 +135,8 @@ if (!function_exists('admin_warning')) {
      *
      * @param string $title
      * @param string $message
+     *
+     * @return void
      */
     function admin_warning($title, $message = '')
     {
@@ -144,6 +152,8 @@ if (!function_exists('admin_info')) {
      * @param string $title
      * @param string $message
      * @param string $type
+     *
+     * @return void
      */
     function admin_info($title, $message = '', $type = 'info')
     {
@@ -161,6 +171,8 @@ if (!function_exists('admin_error_once')) {
      *
      * @param string $title
      * @param string $message
+     *
+     * @return void
      */
     function admin_error_once($title, $message = '')
     {
@@ -175,6 +187,8 @@ if (!function_exists('admin_warning_once')) {
      *
      * @param string $title
      * @param string $message
+     *
+     * @return void
      */
     function admin_warning_once($title, $message = '')
     {
@@ -190,6 +204,8 @@ if (!function_exists('admin_info_once')) {
      * @param string $title
      * @param string $message
      * @param string $type
+     *
+     * @return void
      */
     function admin_info_once($title, $message = '', $type = 'info')
     {
@@ -202,7 +218,7 @@ if (!function_exists('admin_info_once')) {
 if (!function_exists('admin_asset')) {
 
     /**
-     * @param $path
+     * @param  string $path
      *
      * @return string
      */
@@ -218,8 +234,10 @@ if (!function_exists('admin_trans')) {
      * Translate the given message.
      *
      * @param string $key
-     * @param array $replace
+     * @param array<mixed> $replace
      * @param string $locale
+     *
+     * @return string|null
      */
     function admin_trans($key = null, $replace = [], $locale = null)
     {
@@ -238,8 +256,10 @@ if (!function_exists('array_delete')) {
     /**
      * Delete from array by value.
      *
-     * @param array $array
+     * @param array<mixed> $array
      * @param mixed $value
+     *
+     * @return void
      */
     function array_delete(&$array, $value)
     {
@@ -256,10 +276,10 @@ if (!function_exists('class_uses_deep')) {
     /**
      * To get ALL traits including those used by parent classes and other traits.
      *
-     * @param $class
+     * @param object|string $class
      * @param bool $autoload
      *
-     * @return array
+     * @return array<mixed>
      */
     function class_uses_deep($class, $autoload = true)
     {
@@ -280,7 +300,7 @@ if (!function_exists('class_uses_deep')) {
 if (!function_exists('admin_dump')) {
 
     /**
-     * @param $var
+     * @param mixed $var
      *
      * @return string
      */
@@ -332,9 +352,9 @@ if (!function_exists('file_size')) {
 if (!function_exists('prepare_options')) {
 
     /**
-     * @param array $options
+     * @param array<mixed> $options
      *
-     * @return array
+     * @return array<mixed>
      */
     function prepare_options(array $options)
     {
@@ -361,7 +381,7 @@ if (!function_exists('prepare_options')) {
 if (!function_exists('json_encode_options')) {
 
     /**
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @return string
      *
@@ -451,7 +471,8 @@ if (!function_exists('json_encode_options')) {
          * @param string $separator Delimited string
          * @param string|null $string Input string
          * @param int $limit Number of elements in the return array
-         * @return array
+         *
+         * @return array<string>
          */
         function explode_ex(string $separator, ?string $string, int $limit = PHP_INT_MAX): array
         {
@@ -467,6 +488,8 @@ if (!function_exists('json_encode_options')) {
          *
          * @param string|null $url parse target URL
          * @param int $component get only a specific URL component
+         *
+         * @return array<string>|string|false|null
          */
         function parse_url_ex(?string $url, int $component = -1)
         {
@@ -530,11 +553,11 @@ if (!function_exists('json_encode_options')) {
         /**
          * Wrapper for str_replace that throws when an error occurs.
          *
-         * @param array|string $search search string or array
-         * @param array|string|null $replace replace string or array
-         * @param string|array|null $subject string or array to be searched / replaced.
+         * @param array<string>|string $search search string or array
+         * @param array<string>|string|null $replace replace string or array
+         * @param string|array<string>|null $subject string or array to be searched / replaced.
          * @param int|null $count The number of matched and replaced locations is stored here.
-         * @return string|array
+         * @return string|array<string>
          */
         function str_replace_ex(
             array|string $search,
@@ -555,7 +578,7 @@ if (!function_exists('json_encode_options')) {
          *
          * @param string  $pattern A string that represents the pattern to search for
          * @param ?string $subject input value
-         * @param array   $matches If matches is specified, the search results will be assigned. 
+         * @param array<string>   $matches If matches is specified, the search results will be assigned.
          * @param int     $flags   mattching type flags. 
          * @param int     $offset  Specify the start position of the search (in bytes)
          *

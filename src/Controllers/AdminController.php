@@ -24,7 +24,7 @@ class AdminController extends Controller
     /**
      * Set description for following 4 action pages.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $description = [
 //        'index'  => 'Index',

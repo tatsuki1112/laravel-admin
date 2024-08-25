@@ -2,6 +2,7 @@
 
 namespace Encore\Admin;
 
+use Doctrine\DBAL\Schema\View;
 use Encore\Admin\Exception\Handler;
 use Encore\Admin\Show\Divider;
 use Encore\Admin\Show\Field;
@@ -50,14 +51,14 @@ class Show implements Renderable
     /**
      * Fields to be show.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $fields;
 
     /**
      * Relations to be show.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $relations;
 
@@ -69,7 +70,7 @@ class Show implements Renderable
     /**
      * Extended fields.
      *
-     * @var array
+     * @var array<mixed>
      */
     public static $extendedFields = [];
 
@@ -108,6 +109,8 @@ class Show implements Renderable
      * Initialize with user pre-defined default disables, etc.
      *
      * @param \Closure $callback
+     *
+     * @return void
      */
     public static function init(\Closure $callback = null)
     {
@@ -129,6 +132,8 @@ class Show implements Renderable
 
     /**
      * Initialize the contents to show.
+     *
+     * @return void
      */
     protected function initContents()
     {
@@ -138,6 +143,8 @@ class Show implements Renderable
 
     /**
      * Initialize panel.
+     *
+     * @return void
      */
     protected function initPanel()
     {
@@ -170,7 +177,7 @@ class Show implements Renderable
     /**
      * Add multiple fields.
      *
-     * @param array $fields
+     * @param array<mixed> $fields
      *
      * @return $this
      */
@@ -270,6 +277,8 @@ class Show implements Renderable
      * Overwrite existing field.
      *
      * @param string $name
+     *
+     * @return void
      */
     protected function overwriteExistingField($name)
     {
@@ -288,6 +297,8 @@ class Show implements Renderable
      * Overwrite existing relation.
      *
      * @param string $name
+     *
+     * @return void
      */
     protected function overwriteExistingRelation($name)
     {
@@ -304,6 +315,8 @@ class Show implements Renderable
 
     /**
      * Show a divider.
+     *
+     * @return void
      */
     public function divider()
     {
@@ -383,7 +396,7 @@ class Show implements Renderable
      * Add field and relation dynamically.
      *
      * @param string $method
-     * @param array  $arguments
+     * @param array<int, mixed>  $arguments
      *
      * @return bool|mixed
      */
@@ -427,7 +440,7 @@ class Show implements Renderable
      * Handle relation field.
      *
      * @param string $method
-     * @param array  $arguments
+     * @param array<int, mixed>  $arguments
      *
      * @return $this|bool|Relation|Field
      */
@@ -558,6 +571,10 @@ class Show implements Renderable
         }
     }
 
+    /**
+     * @param array<string, mixed> $data
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     protected function renderView($data)
     {
         return view('admin::show', $data);

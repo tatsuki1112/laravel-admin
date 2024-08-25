@@ -8,19 +8,19 @@ use Encore\Admin\Grid\Linker;
 class Actions extends AbstractDisplayer
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $appends = [];
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $prepends = [];
 
     /**
      * Default actions.
      *
-     * @var array
+     * @var array<string>
      */
     protected $actions = ['view', 'edit', 'delete'];
 
@@ -32,7 +32,7 @@ class Actions extends AbstractDisplayer
     /**
      * Append a action.
      *
-     * @param $action
+     * @param mixed $action
      *
      * @return $this
      */
@@ -46,7 +46,7 @@ class Actions extends AbstractDisplayer
     /**
      * Prepend a action.
      *
-     * @param $action
+     * @param mixed $action
      *
      * @return $this
      */
@@ -69,6 +69,7 @@ class Actions extends AbstractDisplayer
 
     /**
      * Disable view action.
+     * @param bool $disable
      *
      * @return $this
      */
@@ -85,6 +86,7 @@ class Actions extends AbstractDisplayer
 
     /**
      * Disable delete.
+     * @param bool $disable
      *
      * @return $this.
      */
@@ -101,6 +103,7 @@ class Actions extends AbstractDisplayer
 
     /**
      * Disable edit.
+     * @param bool $disable
      *
      * @return $this.
      */
@@ -118,7 +121,7 @@ class Actions extends AbstractDisplayer
     /**
      * Set resource of current resource.
      *
-     * @param $resource
+     * @param string $resource
      *
      * @return $this
      */
@@ -141,6 +144,9 @@ class Actions extends AbstractDisplayer
 
     /**
      * {@inheritdoc}
+     * @param \Closure|null $callback
+     *
+     * @return string
      */
     public function display($callback = null)
     {
@@ -201,6 +207,9 @@ class Actions extends AbstractDisplayer
             ->tooltip(trans('admin.delete'));
     }
 
+    /**
+     * @return void
+     */
     protected function setupDeleteScript()
     {
         $uri = url($this->getResource());

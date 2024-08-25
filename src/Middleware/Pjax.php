@@ -17,6 +17,8 @@ class Pjax
      *
      * @param Request $request
      * @param Closure $next
+     *
+     * @return mixed
      */
     public function handle($request, Closure $next)
     {
@@ -43,6 +45,8 @@ class Pjax
      * Send a response through this middleware.
      *
      * @param Response $response
+     *
+     * @return void
      */
     public static function respond(Response $response)
     {
@@ -149,6 +153,8 @@ class Pjax
      *
      * @param Response $response
      * @param Request  $request
+     *
+     * @return void
      */
     protected function setUriHeader(Response $response, Request $request)
     {

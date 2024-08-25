@@ -5,10 +5,14 @@ namespace Encore\Admin\Grid\Tools;
 use Encore\Admin\Grid;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder;
 
 class Footer extends AbstractTool
 {
+    /**
+     * @var \Illuminate\Database\Eloquent\Builder<Model> | null
+     */
     protected $queryBuilder;
 
     /**
@@ -23,6 +27,7 @@ class Footer extends AbstractTool
 
     /**
      * Get model query builder.
+     * @return \Illuminate\Database\Eloquent\Builder<Model>
      */
     public function queryBuilder()
     {

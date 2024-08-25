@@ -4,6 +4,9 @@ namespace Encore\Admin\Widgets\Grid\Tools;
 
 class BatchDelete extends BatchAction
 {
+    /**
+     * @param string $title
+     */
     public function __construct($title)
     {
         $this->title = $title;

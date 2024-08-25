@@ -13,7 +13,7 @@ class Tab
     protected $form;
 
     /**
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $tabs;
 
@@ -59,7 +59,7 @@ class Tab
      *
      * @param \Closure $content
      *
-     * @return Collection
+     * @return Collection<int|string, mixed>
      */
     protected function collectFields(\Closure $content)
     {
@@ -99,7 +99,7 @@ class Tab
     /**
      * Get all tabs.
      *
-     * @return Collection
+     * @return Collection<int|string, mixed>
      */
     public function getTabs()
     {

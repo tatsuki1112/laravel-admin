@@ -23,13 +23,14 @@ class Menu extends Model
 
     /**
      * The attributes that are mass assignable.
+     * @var array<int, string>
      */
     protected $fillable = ['parent_id', 'order', 'title', 'icon', 'uri', 'permission'];
 
     /**
      * Create a new Eloquent model instance.
      *
-     * @param array $attributes
+     * @param array<mixed> $attributes
      */
     public function __construct(array $attributes = [])
     {
@@ -57,7 +58,7 @@ class Menu extends Model
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public function allNodes() : array
     {

@@ -34,7 +34,7 @@ class Text extends Presenter
     /**
      * Get variables for field template.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function variables() : array
     {
@@ -85,7 +85,7 @@ class Text extends Presenter
     }
 
     /**
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @see https://github.com/RobinHerbots/Inputmask/blob/4.x/README_numeric.md
      *
@@ -97,7 +97,7 @@ class Text extends Presenter
     }
 
     /**
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @see https://github.com/RobinHerbots/Inputmask/blob/4.x/README_numeric.md
      *
@@ -113,7 +113,7 @@ class Text extends Presenter
     }
 
     /**
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @see https://github.com/RobinHerbots/Inputmask/blob/4.x/README_numeric.md
      *
@@ -153,7 +153,7 @@ class Text extends Presenter
     }
 
     /**
-     * @param array  $options
+     * @param array<mixed>  $options
      * @param string $icon
      *
      * @return $this

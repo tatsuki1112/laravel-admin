@@ -4,6 +4,9 @@ namespace Encore\Admin\Grid\Tools;
 
 class BatchDelete extends BatchAction
 {
+    /**
+     * @param string $title
+     */
     public function __construct($title)
     {
         $this->title = $title;
@@ -11,6 +14,8 @@ class BatchDelete extends BatchAction
 
     /**
      * Script of batch delete action.
+     *
+     * @return string
      */
     public function script()
     {

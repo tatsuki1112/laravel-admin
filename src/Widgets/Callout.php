@@ -32,6 +32,8 @@ class Callout extends Widget implements Renderable
      * @param string $content
      * @param string $title
      * @param string $style
+     *
+     * @return void
      */
     public function __construct($content, $title = '', $style = 'danger')
     {
@@ -57,7 +59,7 @@ class Callout extends Widget implements Renderable
     }
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     protected function variables()
     {

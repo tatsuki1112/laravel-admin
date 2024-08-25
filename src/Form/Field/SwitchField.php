@@ -8,26 +8,38 @@ use Illuminate\Support\Arr;
 
 class SwitchField extends Field
 {
+    /**
+     * @var array<string>
+     */
     protected static $css = [
         '/vendor/laravel-admin/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css',
     ];
 
+    /**
+     * @var array<string>
+     */
     protected static $js = [
         '/vendor/laravel-admin/bootstrap-switch/dist/js/bootstrap-switch.min.js',
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $states = [
         'on'  => ['value' => 1, 'text' => 'ON', 'color' => 'primary'],
         'off' => ['value' => 0, 'text' => 'OFF', 'color' => 'default'],
     ];
 
+    /**
+     * @var string
+     */
     protected $size = 'small';
 
     /**
      * Field constructor.
      *
-     * @param       $column
-     * @param array $arguments
+     * @param string     $column
+     * @param array<mixed> $arguments
      */
     public function __construct($column = '', $arguments = [])
     {
@@ -35,13 +47,20 @@ class SwitchField extends Field
 
         $this->rules([new HasOptionRule($this)]);
     }
-    
+
+    /**
+     * @return array<mixed>
+     */
     public function getOptions(){
         return collect($this->states)->mapWithKeys(function($state){
             return [Arr::get($state, 'value') => Arr::get($state, 'text')];
         })->toArray();
     }
 
+    /**
+     * @param string $size
+     * @return $this
+     */
     public function setSize($size)
     {
         $this->size = $size;
@@ -49,6 +68,10 @@ class SwitchField extends Field
         return $this;
     }
 
+    /**
+     * @param array<mixed> $states
+     * @return $this
+     */
     public function states($states = [])
     {
         foreach (Arr::dot($states) as $key => $state) {
@@ -58,6 +81,10 @@ class SwitchField extends Field
         return $this;
     }
 
+    /**
+     * @param string $value
+     * @return string
+     */
     public function prepare($value)
     {
         if (isset($this->states[$value])) {
@@ -67,6 +94,9 @@ class SwitchField extends Field
         return $value;
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|string
+     */
     public function render()
     {
         if(is_null($this->value())){

@@ -10,6 +10,11 @@ class Nullable extends Field
     {
     }
 
+    /**
+     * @param mixed $method
+     * @param mixed $parameters
+     * @return $this
+     */
     public function __call($method, $parameters)
     {
         return $this;

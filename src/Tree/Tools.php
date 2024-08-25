@@ -19,7 +19,7 @@ class Tools implements Renderable
     /**
      * Collection of tools.
      *
-     * @var Collection
+     * @var Collection<int|string, mixed>
      */
     protected $tools;
 

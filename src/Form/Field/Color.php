@@ -4,10 +4,16 @@ namespace Encore\Admin\Form\Field;
 
 class Color extends Text
 {
+    /**
+     * @var array<string>
+     */
     protected static $css = [
         '/vendor/laravel-admin/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.min.css',
     ];
 
+    /**
+     * @var array<string>
+     */
     protected static $js = [
         '/vendor/laravel-admin/AdminLTE/plugins/colorpicker/bootstrap-colorpicker.min.js',
     ];

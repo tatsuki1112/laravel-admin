@@ -1,7 +1,7 @@
 parameters:
     paths:
         - src
-    level: 5
+    level: 6
     ignoreErrors:
         - '#Call to static method transaction\(\) on an unknown class ExmentDB.#'
         - '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$id.#'
@@ -12,6 +12,8 @@ parameters:
         - '#Return type \(Illuminate\\Contracts\\View\\Factory\|Illuminate\\View\\View\) of method Encore\\Admin\\Widgets\\Grid\\Tools\\QuickSearch::render\(\) should be compatible with return type \(string\) of method Encore\\Admin\\Widgets\\Grid\\Tools\\AbstractTool::render\(\)#'
         - '#Return type \(Illuminate\\Contracts\\View\\Factory\|Illuminate\\View\\View\) of method Encore\\Admin\\Widgets\\Grid\\Tools\\QuickSearch::render\(\) should be compatible with return type \(string\) of method Illuminate\\Contracts\\Support\\Renderable::render\(\)#'
         - '#Instanceof between Illuminate\\Database\\Eloquent\\Relations\\Relation and Illuminate\\Database\\Eloquent\\Relations\\MorphToMany will always evaluate to false.#'
+        - '#Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany does not specify its types#'
+        - '#Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types#'
 
 includes:
     - vendor/nunomaduro/larastan/extension.neon

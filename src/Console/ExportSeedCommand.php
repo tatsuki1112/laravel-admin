@@ -3,6 +3,7 @@
 namespace Encore\Admin\Console;
 
 use Illuminate\Console\Command;
+use mysql_xdevapi\SqlStatementResult;
 
 class ExportSeedCommand extends Command
 {
@@ -79,7 +80,7 @@ class ExportSeedCommand extends Command
      * Get data array from table as string result var_export.
      *
      * @param string $table
-     * @param array  $exceptFields
+     * @param array<mixed>  $exceptFields
      *
      * @return string
      */
@@ -98,7 +99,7 @@ class ExportSeedCommand extends Command
     /**
      * Get stub contents.
      *
-     * @param $name
+     * @param string $name
      *
      * @return string
      */
@@ -110,8 +111,10 @@ class ExportSeedCommand extends Command
     /**
      * Custom var_export for correct work with \r\n.
      *
-     * @param $var
+     * @param string|array<mixed>|bool|int|double $var
      * @param string $indent
+     *
+     * @return string|array<mixed>|bool|int|double
      */
     protected function varExport($var, $indent = '')
     {

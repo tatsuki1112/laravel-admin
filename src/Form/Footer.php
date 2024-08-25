@@ -25,7 +25,7 @@ class Footer implements Renderable
     /**
      * Available buttons.
      *
-     * @var array
+     * @var array<string>
      */
     protected $buttons = ['reset', 'submit'];
 
@@ -46,7 +46,7 @@ class Footer implements Renderable
     /**
      * Available checkboxes.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $checkboxes = [
         1 => 'continue_editing',
@@ -72,7 +72,7 @@ class Footer implements Renderable
      *     ],
      * ]
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $submitRedirects = [];
 
@@ -93,6 +93,7 @@ class Footer implements Renderable
 
     /**
      * Set submit label.
+     * @param string $submitLabel
      *
      * @return $this
      */
@@ -117,6 +118,7 @@ class Footer implements Renderable
 
     /**
      * Disable reset button.
+     * @param bool $disable
      *
      * @return $this
      */
@@ -133,6 +135,7 @@ class Footer implements Renderable
 
     /**
      * Disable submit button.
+     * @param bool $disable
      *
      * @return $this
      */
@@ -149,6 +152,7 @@ class Footer implements Renderable
 
     /**
      * Disable View Checkbox.
+     * @pparam bool $disable
      *
      * @return $this
      */
@@ -159,6 +163,7 @@ class Footer implements Renderable
 
     /**
      * Disable Editing Checkbox.
+     * @param bool $disable
      *
      * @return $this
      */
@@ -169,6 +174,7 @@ class Footer implements Renderable
 
     /**
      * Disable Creating Checkbox.
+     * @param bool $disable
      *
      * @return $this
      */
@@ -179,6 +185,8 @@ class Footer implements Renderable
 
     /**
      * enable Checkbox.
+     * @param int|string $key
+     * @param int|string $value
      *
      * @return $this
      */
@@ -195,6 +203,7 @@ class Footer implements Renderable
     
     /**
      * Disable Checkbox.
+     * @param string $key
      *
      * @return $this
      */
@@ -209,6 +218,7 @@ class Footer implements Renderable
 
     /**
      * Set default Checkbox.
+     * @param string $key
      *
      * @return $this
      */
@@ -233,6 +243,7 @@ class Footer implements Renderable
      *         'label': 'FOO', // this check label
      *         'redirect': \Closure, //set callback. Please redirect.
      *     ]
+     * @param array<mixed> $submitRedirect
      *
      * @return $this
      */
@@ -249,6 +260,7 @@ class Footer implements Renderable
      *
      * @param string $resourcesPath
      * @param string $key
+     * @param int $afterSaveValue
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|string|null
      */
@@ -289,6 +301,7 @@ class Footer implements Renderable
 
     /**
      * Setup scripts.
+     * @return void
      */
     protected function setupScript()
     {

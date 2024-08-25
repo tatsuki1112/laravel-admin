@@ -7,6 +7,10 @@ use Illuminate\Support\Arr;
 
 class Badge extends AbstractDisplayer
 {
+    /**
+     * @param string|Arrayable<int|string, mixed>|array<int|string, mixed> $style
+     * @return mixed|string
+     */
     public function display($style = 'red')
     {
         if ($this->value instanceof Arrayable) {

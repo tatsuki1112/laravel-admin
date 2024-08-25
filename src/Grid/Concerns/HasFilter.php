@@ -69,6 +69,8 @@ trait HasFilter
      * Set the grid filter.
      *
      * @param Closure $callback
+     *
+     * @return void
      */
     public function filter(Closure $callback)
     {

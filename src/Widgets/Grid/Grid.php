@@ -46,28 +46,28 @@ class Grid
     /**
      * Collection of all data rows.
      *
-     * @var \Illuminate\Support\Collection
+     * @var \Illuminate\Support\Collection<int|string, mixed>
      */
     protected $rows;
 
     /**
      * Collection of all grid columns.
      *
-     * @var \Illuminate\Support\Collection
+     * @var \Illuminate\Support\Collection<int|string, mixed>
      */
     protected $columns;
 
     /**
      * All column names of the grid.
      *
-     * @var array
+     * @var array<string>
      */
     public $columnNames = [];
 
     /**
      * Per-page options.
      *
-     * @var array
+     * @var array<int>
      */
     public $perPages = [10, 20, 30, 50, 100];
 
@@ -93,7 +93,7 @@ class Grid
     /**
      * Options for grid.
      *
-     * @var array
+     * @var array<string, bool>
      */
     protected $options = [
         'show_pagination'        => true,
@@ -115,6 +115,8 @@ class Grid
 
     /**
      * Called paginator
+     *
+     * @var LengthAwarePaginator<array<string, mixed>>|null
      */
     protected $_paginator;
 
@@ -189,6 +191,8 @@ class Grid
 
     /**
      * Initialize.
+     *
+     * @return void
      */
     protected function initialize()
     {
@@ -204,6 +208,8 @@ class Grid
      * Handle export request.
      *
      * @param bool $forceExport
+     *
+     * @return void
      */
     protected function handleExportRequest($forceExport = false)
     {
@@ -253,7 +259,10 @@ class Grid
 
     /**
      * Get paginator or all data.
-     * 
+     *
+     * @param array<mixed> $options
+     *
+     * @return Collection<int|string, mixed>
      */ 
     public function getData(array $options = []) : Collection
     {
@@ -263,6 +272,7 @@ class Grid
         }
 
         $callback = $this->getDataCallback;
+        /** @phpstan-ignore-next-line Unable to resolve the template type TValue in call to function collect */
         return collect($callback($this, $options));
     }
 
@@ -285,9 +295,9 @@ class Grid
 
     /**
      * Get paginator data.
-     * 
+     * @param array<mixed> $options
      *
-     * @return  LengthAwarePaginator
+     * @return  LengthAwarePaginator<array<string, mixed>>
      */ 
     public function getPaginatorData(array $options = []) : LengthAwarePaginator
     {
@@ -345,6 +355,7 @@ class Grid
 
     /**
      * Set primary key name of data.
+     * @param string $keyName
      *
      * @return $this
      */
@@ -443,7 +454,7 @@ class Grid
     /**
      * Set exporter driver for Grid to export.
      *
-     * @param $exporter
+     * @param string $exporter
      *
      * @return $this
      */
@@ -499,7 +510,7 @@ class Grid
     /**
      * get rows.
      *
-     * @return Collection|null
+     * @return Collection<int|string, mixed>|null
      */
     public function rows()
     {
@@ -509,7 +520,7 @@ class Grid
     /**
      * Build the grid rows.
      *
-     * @param array $data
+     * @param array<mixed> $data
      *
      * @return $this
      */
@@ -527,6 +538,8 @@ class Grid
      *
      * @param string $name
      * @param string $label
+     *
+     * @return \Encore\Admin\Grid\Column|Column
      */
     public function column($name, $label = '')
     {
@@ -548,9 +561,9 @@ class Grid
      * 1.$grid->columns(['name' => 'Name', 'email' => 'Email' ...]);
      * 2.$grid->columns('name', 'email' ...)
      *
-     * @param array $columns
+     * @param array<mixed> $columns
      *
-     * @return Collection|void
+     * @return Collection<int|string, mixed>|void
      */
     public function columns($columns = [])
     {
@@ -653,6 +666,7 @@ class Grid
 
     /**
      * get grid actions.
+     * @param mixed  $row
      *
      * @return string
      */
@@ -666,7 +680,7 @@ class Grid
     /**
      * Get all variables will used in grid view.
      *
-     * @return array
+     * @return array<string,mixed>
      */
     protected function variables()
     {
@@ -679,7 +693,7 @@ class Grid
      * Execute the filter with conditions.
      * *ToDo: Moved from filter. If support filter, move to filter class.*
      *
-     * @return Collection
+     * @return Collection<int|string, mixed>
      */
     public function getCurrentPage(?int $perPage = null, ?int $page = null)
     {
@@ -693,6 +707,8 @@ class Grid
      * *ToDo: Moved from filter. If support filter, move to filter class.*
      * @param callable $callback
      * @param int|null $count
+     *
+     * @return callable|Collection<int|string, mixed>
      */
     public function chunk(callable $callback, ?int $count = null)
     {
@@ -727,8 +743,8 @@ class Grid
     /**
      * Dynamically add columns to the grid view.
      *
-     * @param $method
-     * @param $arguments
+     * @param string $method
+     * @param array<int, string> | null $arguments
      *
      * @return Column
      */

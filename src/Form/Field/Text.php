@@ -55,7 +55,7 @@ class Text extends Field
     /**
      * Add inputmask to an elements.
      *
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @return $this
      */
@@ -71,7 +71,7 @@ class Text extends Field
     /**
      * Add datalist element to Text input.
      *
-     * @param array $entries
+     * @param array<mixed> $entries
      *
      * @return $this
      */

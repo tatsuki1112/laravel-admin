@@ -30,7 +30,7 @@ class Box extends Widget implements Renderable
     protected $footer = '';
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $tools = [];
 
@@ -44,6 +44,7 @@ class Box extends Widget implements Renderable
      *
      * @param string $title
      * @param string|Form $content
+     * @param string $footer
      */
     public function __construct($title = '', $content = '', $footer = '')
     {
@@ -128,7 +129,8 @@ class Box extends Widget implements Renderable
     /**
      *  Set box body scrollable.
      *
-     * @param array $options
+     * @param array<mixed> $options
+     * @param string $nodeSelector
      *
      * @return $this
      */
@@ -160,6 +162,7 @@ SCRIPT;
 
     /**
      * Set box tools.
+     * @param mixed $html
      *
      * @return $this
      */
@@ -173,7 +176,7 @@ SCRIPT;
     /**
      * Set box style.
      *
-     * @param string|array $styles
+     * @param string|array<mixed> $styles
      *
      * @return $this|Box
      */
@@ -194,6 +197,8 @@ SCRIPT;
 
     /**
      * Add `box-solid` class to box.
+     *
+     * @return $this|Box
      */
     public function solid()
     {
@@ -203,7 +208,7 @@ SCRIPT;
     /**
      * Variables in view.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function variables()
     {

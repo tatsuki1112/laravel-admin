@@ -32,7 +32,7 @@ class Content implements Renderable
     /**
      * Page breadcrumb.
      *
-     * @var array
+     * @var array<mixed>
      */
     protected $breadcrumb = [];
 
@@ -107,7 +107,7 @@ class Content implements Renderable
     /**
      * Set breadcrumb of content.
      *
-     * @param array ...$breadcrumb
+     * @param array<mixed> ...$breadcrumb
      *
      * @return $this
      */
@@ -123,7 +123,7 @@ class Content implements Renderable
     /**
      * Validate content breadcrumb.
      *
-     * @param array $breadcrumb
+     * @param array<mixed> $breadcrumb
      *
      * @throws \Exception
      *
@@ -155,7 +155,7 @@ class Content implements Renderable
     /**
      * Add one row for content body.
      *
-     * @param $content
+     * @param mixed $content
      *
      * @return $this
      */
@@ -180,7 +180,7 @@ class Content implements Renderable
      * Render giving view as content body.
      *
      * @param string $view
-     * @param array  $data
+     * @param array<mixed>  $data
      *
      * @return Content
      */
@@ -190,7 +190,7 @@ class Content implements Renderable
     }
 
     /**
-     * @param $var
+     * @param mixed $var
      *
      * @return Content
      */
@@ -203,6 +203,8 @@ class Content implements Renderable
      * Add Row.
      *
      * @param Row $row
+     *
+     * @return void
      */
     protected function addRow(Row $row)
     {

@@ -15,7 +15,7 @@ class MultipleSteps implements Renderable
     protected $current;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $steps = [];
 
@@ -27,7 +27,7 @@ class MultipleSteps implements Renderable
     /**
      * MultipleSteps constructor.
      *
-     * @param array $steps
+     * @param array<mixed> $steps
      * @param null|int|string  $current
      */
     public function __construct($steps = [], $current = null)
@@ -38,7 +38,7 @@ class MultipleSteps implements Renderable
     }
 
     /**
-     * @param array $steps
+     * @param array<mixed> $steps
      * @param null  $current
      *
      * @return static
@@ -49,7 +49,7 @@ class MultipleSteps implements Renderable
     }
 
     /**
-     * @param array      $steps
+     * @param array<mixed> $steps
      * @param string|int $current
      *
      * @return string|int

@@ -9,14 +9,14 @@ class Map extends Field
     /**
      * Column name.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $column = [];
 
     /**
      * Get assets required by this field.
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public static function getAssets()
     {
@@ -37,6 +37,10 @@ class Map extends Field
         return compact('js');
     }
 
+    /**
+     * @param mixed $column
+     * @param mixed $arguments
+     */
     public function __construct($column, $arguments)
     {
         $this->column['lat'] = (string) $column;
@@ -66,6 +70,9 @@ class Map extends Field
         }
     }
 
+    /**
+     * @return void
+     */
     public function useGoogleMap()
     {
         $this->script = <<<EOT
@@ -106,6 +113,9 @@ class Map extends Field
 EOT;
     }
 
+    /**
+     * @return void
+     */
     public function useTencentMap()
     {
         $this->script = <<<EOT
@@ -155,6 +165,9 @@ EOT;
 EOT;
     }
 
+    /**
+     * @return void
+     */
     public function useYandexMap()
     {
         $this->script = <<<EOT

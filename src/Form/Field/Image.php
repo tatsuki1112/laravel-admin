@@ -21,7 +21,7 @@ class Image extends File
     protected $rules = 'image';
 
     /**
-     * @param array|UploadedFile|null|string $image
+     * @param array<mixed>|UploadedFile|null|string $image
      */
     public function prepare($image)
     {

@@ -44,7 +44,7 @@ class PermissionController extends AdminController
                     list($method, $path) = explode(':', $path);
                     $method = explode(',', $method);
                 }
-
+                /** @phpstan-ignore-next-line Unable to resolve the template type TKey in call to function collect */
                 $method = collect($method)->map(function ($name) {
                     return strtoupper($name);
                 })->map(function ($name) {
@@ -97,6 +97,7 @@ class PermissionController extends AdminController
                     $method = explode(',', $method);
                 }
 
+                /** @phpstan-ignore-next-line Unable to resolve the template type TKey in call to function collect */
                 $method = collect($method)->map(function ($name) {
                     return strtoupper($name);
                 })->map(function ($name) {
@@ -147,7 +148,7 @@ class PermissionController extends AdminController
     /**
      * Get options of HTTP methods select field.
      *
-     * @return array
+     * @return array<mixed>
      */
     protected function getHttpMethodsOptions()
     {

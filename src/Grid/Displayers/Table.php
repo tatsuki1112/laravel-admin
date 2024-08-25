@@ -6,6 +6,10 @@ use Illuminate\Support\Arr;
 
 class Table extends AbstractDisplayer
 {
+    /**
+     * @param array<mixed> $titles
+     * @return mixed|string
+     */
     public function display($titles = [])
     {
         if (empty($this->value)) {

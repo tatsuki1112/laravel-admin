@@ -17,7 +17,7 @@ class ColumnSelector extends AbstractTool
     protected $grid;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected static $ignoredColumns = [
         //ToDo:修正
@@ -96,7 +96,7 @@ EOT;
     }
 
     /**
-     * @return Collection
+     * @return Collection<int,mixed>
      */
     protected function getGridColumns()
     {
@@ -126,7 +126,9 @@ EOT;
     /**
      * Ignore a column to display in column selector.
      *
-     * @param string|array $name
+     * @param string|array<mixed> $name
+     *
+     * @return void
      */
     public static function ignore($name)
     {
@@ -135,6 +137,8 @@ EOT;
 
     /**
      * Setup script.
+     *
+     * @return void
      */
     protected function setupScript()
     {

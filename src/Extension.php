@@ -17,12 +17,12 @@ abstract class Extension
     protected $name;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     public $css = [];
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     public $js = [];
 
@@ -42,12 +42,12 @@ abstract class Extension
     public $migrations = '';
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     public $menu = [];
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     public $permission = [];
 
@@ -61,7 +61,7 @@ abstract class Extension
     /**
      * The menu validation rules.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $menuValidationRules = [
         'title' => 'required',
@@ -72,7 +72,7 @@ abstract class Extension
     /**
      * The permission validation rules.
      *
-     * @var array
+     * @var array<string, string>
      */
     protected $permissionValidationRules = [
         'name'  => 'required',
@@ -99,6 +99,8 @@ abstract class Extension
 
     /**
      * Bootstrap this extension.
+     *
+     * @return bool
      */
     public static function boot()
     {
@@ -134,7 +136,7 @@ abstract class Extension
     /**
      * Get the paths of css files.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function css()
     {
@@ -144,7 +146,7 @@ abstract class Extension
     /**
      * Get the paths of js files.
      *
-     * @return array
+     * @return array<mixed>
      */
     public function js()
     {
@@ -172,7 +174,7 @@ abstract class Extension
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public function menu()
     {
@@ -180,7 +182,7 @@ abstract class Extension
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public function permission()
     {
@@ -211,7 +213,7 @@ abstract class Extension
      * Get config set in config/admin.php.
      *
      * @param string $key
-     * @param null|array   $default
+     * @param null|array<mixed>   $default
      *
      * @return \Illuminate\Config\Repository|mixed
      */
@@ -230,6 +232,7 @@ abstract class Extension
 
     /**
      * Import menu item and permission to laravel-admin.
+     * @return void
      */
     public static function import()
     {
@@ -259,7 +262,7 @@ abstract class Extension
     /**
      * Validate menu fields.
      *
-     * @param array $menu
+     * @param array<mixed> $menu
      *
      * @throws \Exception
      *
@@ -282,7 +285,8 @@ abstract class Extension
     /**
      * Validate permission fields.
      *
-     * @param array $permission
+     *
+     * @param array<mixed> $permission
      *
      * @throws \Exception
      *
@@ -309,6 +313,8 @@ abstract class Extension
      * @param string|null $uri
      * @param string|null  $icon
      * @param int    $parentId
+     *
+     * @return void
      */
     protected static function createMenu($title, $uri, $icon = 'fa-bars', $parentId = 0)
     {
@@ -328,9 +334,11 @@ abstract class Extension
     /**
      * Create a permission for this extension.
      *
-     * @param $name
-     * @param $slug
-     * @param $path
+     * @param null|mixed $name
+     * @param null|mixed $slug
+     * @param null|mixed $path
+     *
+     * @return void
      */
     protected static function createPermission($name, $slug, $path)
     {
@@ -346,7 +354,9 @@ abstract class Extension
     /**
      * Set routes for this extension.
      *
-     * @param $callback
+     * @param mixed $callback
+     *
+     * @return void
      */
     public static function routes($callback)
     {

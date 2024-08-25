@@ -6,13 +6,22 @@ use Encore\Admin\Form\Field;
 
 class Divider extends Field
 {
+    /**
+     * @var string
+     */
     protected $title;
 
+    /**
+     * @param string $title
+     */
     public function __construct($title = '')
     {
         $this->title = $title;
     }
 
+    /**
+     * @return string
+     */
     public function render()
     {
         if (empty($this->title)) {

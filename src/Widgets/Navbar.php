@@ -9,7 +9,7 @@ use Illuminate\Contracts\Support\Renderable;
 class Navbar implements Renderable
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $elements = [];
 
@@ -25,7 +25,7 @@ class Navbar implements Renderable
     }
 
     /**
-     * @param $element
+     * @param mixed $element
      *
      * @return $this
      */
@@ -37,7 +37,7 @@ class Navbar implements Renderable
     }
 
     /**
-     * @param $element
+     * @param mixed $element
      *
      * @return $this
      */
@@ -49,7 +49,7 @@ class Navbar implements Renderable
     }
 
     /**
-     * @param $element
+     * @param mixed $element
      *
      * @return Navbar
      *

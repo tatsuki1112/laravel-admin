@@ -13,19 +13,19 @@ class Column implements Buildable
     /**
      * grid system prefix width.
      *
-     * @var array
+     * @var array<string, int>|int
      */
     protected $width = [];
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $contents = [];
 
     /**
      * Column constructor.
      *
-     * @param $content
+     * @param mixed $content
      * @param int $width
      */
     public function __construct($content, $width = 12)
@@ -42,7 +42,7 @@ class Column implements Buildable
     /**
      * Append content to column.
      *
-     * @param $content
+     * @param mixed $content
      *
      * @return $this
      */
@@ -56,7 +56,7 @@ class Column implements Buildable
     /**
      * Add a row for column.
      *
-     * @param $content
+     * @param mixed $content
      *
      * @return Column
      */
@@ -83,6 +83,8 @@ class Column implements Buildable
 
     /**
      * Build column html.
+     *
+     * @return void
      */
     public function build()
     {
@@ -101,6 +103,8 @@ class Column implements Buildable
 
     /**
      * Start column.
+     *
+     * @return void
      */
     protected function startColumn()
     {
@@ -112,6 +116,8 @@ class Column implements Buildable
 
     /**
      * End column.
+     *
+     * @return void
      */
     protected function endColumn()
     {

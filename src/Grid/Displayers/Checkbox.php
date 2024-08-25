@@ -7,6 +7,10 @@ use Illuminate\Contracts\Support\Arrayable;
 
 class Checkbox extends AbstractDisplayer
 {
+    /**
+     * @param array<mixed>|\Closure $options
+     * @return string
+     */
     public function display($options = [])
     {
         if ($options instanceof \Closure) {
@@ -50,6 +54,9 @@ EOT;
 EOT;
     }
 
+    /**
+     * @return string
+     */
     protected function script()
     {
         $name = $this->column->getName();

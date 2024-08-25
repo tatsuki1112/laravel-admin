@@ -8,7 +8,7 @@ use Illuminate\Contracts\Support\Arrayable;
 class Radio extends Presenter
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $options = [];
 
@@ -22,7 +22,7 @@ class Radio extends Presenter
     /**
      * Radio constructor.
      *
-     * @param array|Arrayable|null $options
+     * @param array<mixed>|Arrayable<int|string, mixed>|null $options
      */
     public function __construct($options = [])
     {
@@ -45,6 +45,9 @@ class Radio extends Presenter
         return $this;
     }
 
+    /**
+     * @return void
+     */
     protected function prepare()
     {
         $script = "$('.{$this->filter->getId()}').iCheck({radioClass:'iradio_minimal-blue'});";
@@ -53,7 +56,7 @@ class Radio extends Presenter
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     public function variables() : array
     {

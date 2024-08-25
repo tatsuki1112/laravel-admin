@@ -8,9 +8,19 @@ use Illuminate\Contracts\Validation\Rule;
  */
 class DigitBetweenRule implements Rule
 {
+    /**
+     * @var int
+     */
     protected $min;
+    /**
+     * @var int
+     */
     protected $max;
 
+    /**
+     * @param int $min
+     * @param int $max
+     */
     public function __construct($min, $max)
     {
         $this->min = $min;
