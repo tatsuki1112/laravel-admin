@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Dockerfileからイメージをビルド
-        run: docker build --build_arg= PHP_VERSION=${{ matrix.php }} -t phpstan ./docker
+        run: docker build --build_arg=PHP_VERSION=${{ matrix.php }} -t phpstan ./docker
 
       - name: Composer install
         run: docker run --rm -v ${{ github.workspace }}:/var/www/html phpstan composer install
