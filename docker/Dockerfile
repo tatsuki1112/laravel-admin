@@ -1,4 +1,7 @@
-FROM php:8.2-fpm
+# ビルド時にPHPバージョンを指定できるように引数を定義
+ARG PHP_VERSION=8.2
+
+FROM php:${PHP_VERSION}-fpm
 
 # install php-ext
 RUN apt-get update && apt-get install -y git wget gnupg vim unzip libxml2-dev libpng-dev libzip-dev libonig-dev default-mysql-client libldap2-dev\
