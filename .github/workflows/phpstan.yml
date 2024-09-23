@@ -17,12 +17,12 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Dockerfileからイメージをビルド
-        run: docker build -t phpstan ./docker
+        run: docker build --build_arg= PHP_VERSION=${{ matrix.php }} -t phpstan ./docker
 
       - name: Composer install
         run: docker run --rm -v ${{ github.workspace }}:/var/www/html phpstan composer install
 
       - name: PHPStan実行
-        run: docker run --rm -v ${{ github.workspace }}:/var/www/html phpstan vendor/bin/phpstan analyse
+        run: docker run --rm -v ${{ github.workspace }}:/var/www/html phpstan vendor/bin/phpstan analyse --memory-limit=512M
 
 
